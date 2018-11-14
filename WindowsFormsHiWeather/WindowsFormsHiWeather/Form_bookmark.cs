@@ -54,6 +54,7 @@ namespace WindowsFormsHiWeather
             Panel p = new Panel();
             Label label = new Label();
             Label label1 = new Label();
+            PictureBox weather = new PictureBox();
             PictureBox picture = new PictureBox();
 
             p.Name = "panel" + (i * 2 + j + 1);
@@ -68,23 +69,25 @@ namespace WindowsFormsHiWeather
 
             label1.Text = (13).ToString() + "˚C";
             label1.Location = new Point(150, 50);
-            label1.Size = new Size(100, 20);
+            label1.Size = new Size(50, 20);
             label1.Font = new Font(FontFamily.GenericSerif, 14.0F);
-
-            //Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("dust1.PNG");
-            //string filePath = Application.StartupPath + @"\dust1.PNG";
-            //picture.Image = new Bitmap(@"C:\Users\GDC20\Desktop\visual github\HiWeather\Hiweather\Hiweather\image\dust1.PNG");
-            //picture.Image = new Bitmap(filePath);
-            picture.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("dust2");
             
+            weather.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("sunny");
+            weather.SizeMode = PictureBoxSizeMode.StretchImage;
+            weather.Location = new Point(10, 10);
+            weather.Size = new Size(100, 100);
+
+            picture.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("dust2");
             picture.SizeMode = PictureBoxSizeMode.StretchImage;
-            picture.Location = new Point(5, 20);
+            picture.Location = new Point(200, 45);
             picture.Size = new Size(50, 50);
 
 
             p.Controls.Add(label);
             p.Controls.Add(label1);
+            p.Controls.Add(weather);
             p.Controls.Add(picture);
+
             return p;
         }
         

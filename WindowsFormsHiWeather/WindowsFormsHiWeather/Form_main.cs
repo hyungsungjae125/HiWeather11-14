@@ -22,7 +22,7 @@ namespace WindowsFormsHiWeather
         {
             this.IsMdiContainer = true;
             this.Size = new Size(1000, 600);
-
+            
             panel = new Panel();
             panel.Size = new Size(1000, 600);
             panel.Location = new Point(0, 100);
@@ -31,7 +31,8 @@ namespace WindowsFormsHiWeather
             Drawclass d = new Drawclass();
             d.btn(new Btnclass(this, "btn1", "일기예보", 200, 100, 0, 0, btn_click));
             d.btn(new Btnclass(this, "btn2", "즐겨찾기", 200, 100, 200, 0, btn_click));
-
+            d.btn(new Btnclass(this, "btn_feedback", "피드백", 60, 40, 800, 20, btn_click));
+            d.btn(new Btnclass(this, "btn_setting", "설정", 60, 40, 900, 20, btn_click));
         }
         Form form = null;
         private void btn_click(object sender, EventArgs e)
@@ -50,13 +51,26 @@ namespace WindowsFormsHiWeather
             form.FormBorderStyle = FormBorderStyle.None;
             form.BackColor = Color.AliceBlue;
 
-            switch (button.Text)
+            switch (button.Name)
             {
-                case "일기예보":
+                case "btn1"://일기예보 버튼
                     form.BackColor = Color.Beige;
                     break;
-                case "즐겨찾기":
-                    form.BackColor = Color.Black;
+                case "btn2"://즐겨찾기 버튼
+                    form.Controls.Add(pn_create(0,0));
+                    break;
+                case "btn_feedback"://피드백 버튼
+                    //;
+                    break;
+                case "btn_setting"://설정 버튼
+                    Form_bookmark bookmark = new Form_bookmark();
+                    bookmark.FormBorderStyle = FormBorderStyle.None;
+                    bookmark.WindowState = FormWindowState.Normal;
+                    bookmark.Size = new Size(400,200);
+                    bookmark.ShowDialog();
+
+                    //Form_config config = new Form_config();
+                    //config.ShowDialog();
                     break;
                 default:
                     form.BackColor = Color.Yellow;
@@ -66,19 +80,19 @@ namespace WindowsFormsHiWeather
             form.Show();
         }
 
-        private Form pn_create(int i, int j)
+        private Panel pn_create(int i, int j)
         {
-            Form p = new Form();
+            Panel p = new Panel();
             Label label = new Label();
             Label label1 = new Label();
             PictureBox weather = new PictureBox();
             PictureBox picture = new PictureBox();
 
             p.Name = "panel" + (i * 2 + j + 1);
-            p.Location = new Point(20 + i * 435, 35 + j * 140);
+            
             p.Size = new Size(405, 120);
-            //p.
-
+            p.BorderStyle = BorderStyle.FixedSingle;
+            p.Location = new Point(i*400+10, j*120+10);
             label.Text = "금천구, 서울특별시";
             label.Location = new Point(120, 10);
             label.Size = new Size(300, 30);

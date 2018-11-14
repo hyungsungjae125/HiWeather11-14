@@ -133,26 +133,6 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 맑음 {
-            get {
-                object obj = ResourceManager.GetObject("맑음", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap 비옴 {
-            get {
-                object obj = ResourceManager.GetObject("비옴", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap 즐찾화면 {
             get {
                 object obj = ResourceManager.GetObject("즐찾화면", resourceCulture);

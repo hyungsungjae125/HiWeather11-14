@@ -99,6 +99,7 @@ namespace WindowsFormsHiWeather
             label.Size = new Size(100, 20);
             label.Font = new Font(FontFamily.GenericSansSerif, 15.0F, FontStyle.Bold);
             
+            
             return label;
         }
         private Panel pn_create(int i, int j)
@@ -123,6 +124,7 @@ namespace WindowsFormsHiWeather
             label1.Location = new Point(150, 50);
             label1.Size = new Size(50, 20);
             label1.Font = new Font(FontFamily.GenericSerif, 14.0F);
+            
             
             weather.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("sunny");
             weather.SizeMode = PictureBoxSizeMode.StretchImage;

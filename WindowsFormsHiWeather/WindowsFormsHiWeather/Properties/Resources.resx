@@ -133,29 +133,11 @@
   <data name="dust4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dust4.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rain" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>\\192.168.3.88\gdc\rain.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="snow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>\\192.168.3.88\gdc\snow.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sunny" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>\\192.168.3.88\gdc\sunny.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="thunder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>\\192.168.3.88\gdc\thunder.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="날씨전체" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\날씨전체.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="날씨전체2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\날씨전체2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="맑음" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\맑음.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="비옴" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\비옴.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="즐찾화면" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\즐찾화면.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

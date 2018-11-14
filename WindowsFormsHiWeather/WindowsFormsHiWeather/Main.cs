@@ -84,7 +84,7 @@ namespace WindowsFormsHiWeather
 
         private void btn1_Click(Object o, EventArgs e)
         {
-            MessageBox.Show("홈");
+            panel1.Controls.Add(new Form_bookmark());
         }
 
         private void btn2_Click(Object o, EventArgs e)

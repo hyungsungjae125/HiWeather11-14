@@ -73,9 +73,11 @@ namespace WindowsFormsHiWeather
 
             //Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("dust1.PNG");
             string filePath = Application.StartupPath + @"\dust1.PNG";
-            //MessageBox.Show(filePath);
+            MessageBox.Show(filePath);
             //picture.Image = new Bitmap(@"C:\Users\GDC20\Desktop\visual github\HiWeather\Hiweather\Hiweather\image\dust1.PNG");
-            picture.Image = new Bitmap(filePath);
+            //picture.Image = new Bitmap(filePath);
+            picture.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("dust1.image");
+            
             picture.SizeMode = PictureBoxSizeMode.StretchImage;
             picture.Location = new Point(5, 20);
             picture.Size = new Size(50, 50);

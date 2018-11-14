@@ -29,12 +29,38 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.SuspendLayout();
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "cloudy.jpg");
+            this.imageList1.Images.SetKeyName(1, "rain.jpg");
+            this.imageList1.Images.SetKeyName(2, "snow.jpg");
+            this.imageList1.Images.SetKeyName(3, "sunny.jpg");
+            this.imageList1.Images.SetKeyName(4, "thunder.jpg");
+            this.imageList1.Images.SetKeyName(5, "dust1.PNG");
+            this.imageList1.Images.SetKeyName(6, "dust2.PNG");
+            this.imageList1.Images.SetKeyName(7, "dust3.PNG");
+            this.imageList1.Images.SetKeyName(8, "dust4.PNG");
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

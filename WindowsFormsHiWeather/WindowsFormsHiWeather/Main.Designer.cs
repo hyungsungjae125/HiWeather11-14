@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsHiWeather
+﻿using System.Windows.Forms;
+
+namespace WindowsFormsHiWeather
 {
     partial class Main
     {
@@ -6,6 +8,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private TabPage tabPage1;
 
         /// <summary>
         /// Clean up any resources being used.

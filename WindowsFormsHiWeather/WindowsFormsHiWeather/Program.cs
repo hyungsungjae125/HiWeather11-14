@@ -16,7 +16,7 @@ namespace WindowsFormsHiWeather
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_bookmark());
+            Application.Run(new Form1());
         }
     }
 }

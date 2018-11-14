@@ -12,6 +12,10 @@ namespace WindowsFormsHiWeather
 {
     public partial class Form_bookmark : Form
     {
+        TabControl tab = new TabControl();
+        TabPage tabPage1=new TabPage();
+        TabPage tabPage2=new TabPage();
+        
         public Form_bookmark()
         {
             InitializeComponent();
@@ -22,18 +26,69 @@ namespace WindowsFormsHiWeather
 
         private void Form_bookmark_Load(object sender, EventArgs e)
         {
+            this.Size = new Size(1000,600);
             this.BackColor = Color.AliceBlue;
-            MainLabelCreate();
-            //TableLayoutPanelCreate();
+
+            Button button = new Button();
+            button.DialogResult = DialogResult.OK;
+            button.Name = "button1";
+            button.Text = "설정";
+            button.Size = new Size(100,100);
+            button.Location = new Point(800, 0);
+            button.Cursor = Cursors.Hand;
+            button.BringToFront();
+
+            this.Controls.Add(button);
+
+            TabControl tb =tb_create();
+            /*tb.TabPages.Add(MainLabelCreate());
+            
             for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Controls.Add(pn_create(i, j));
+                    tb.TabPages.Add(pn_create(i, j));
                 }
             }
+            */
+            tb.SendToBack();
+            Controls.Add(tb);
+            
         }
-        private void MainLabelCreate()
+        private TabControl tb_create(){
+            tab.Controls.Add(tabPage1);
+            tab.Controls.Add(tabPage2);
+            tab.SelectedIndex = 0;
+            tab.Size = new Size(990, 600);
+            tab.TabIndex = 0;
+            tab.ItemSize = new Size(80,70);
+
+             tabPage1.Location = new Point(0,0);
+            tabPage1.Size = new Size(400, 400);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "일기예보";
+            tabPage1.UseVisualStyleBackColor = true;
+
+             tabPage2.Location = new Point(80,0);
+            tabPage2.Size = new Size(400, 400);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "즐겨찾기";
+            tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.BackColor = Color.AliceBlue; 
+            tabPage2.Controls.Add(MainLabelCreate());
+            
+            tabPage2.Controls.Add(pn_create(0, 0));
+            /*
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    tabPage2.Controls.Add(pn_create(i, j));
+                }
+            }*/
+            return tab;
+        }
+        private Label MainLabelCreate()
         {
             Label label;
             label = new Label();
@@ -43,11 +98,8 @@ namespace WindowsFormsHiWeather
             label.Location = new Point(0, 0);
             label.Size = new Size(100, 20);
             label.Font = new Font(FontFamily.GenericSansSerif, 15.0F, FontStyle.Bold);
-            //label.Font.Bold = true;
-            //label.Font.Size = 10;
-            //label.Size=new Size(1000,200);
-
-            Controls.Add(label);
+            
+            return label;
         }
         private Panel pn_create(int i, int j)
         {

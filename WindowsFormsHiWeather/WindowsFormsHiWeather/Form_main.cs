@@ -31,9 +31,35 @@ namespace WindowsFormsHiWeather
             Drawclass d = new Drawclass();
             d.btn(new Btnclass(this, "btn1", "일기예보", 200, 100, 0, 0, btn_click));
             d.btn(new Btnclass(this, "btn2", "즐겨찾기", 200, 100, 200, 0, btn_click));
-            d.btn(new Btnclass(this, "btn_feedback", "피드백", 60, 40, 800, 20, btn_click));
-            d.btn(new Btnclass(this, "btn_setting", "설정", 60, 40, 900, 20, btn_click));
+            d.btn(new Btnclass(this, "btn_feedback", "피드백", 60, 40, 800, 20, btn2_click));
+            d.btn(new Btnclass(this, "btn_setting", "설정", 60, 40, 900, 20, btn2_click));
         }
+
+        private void btn2_click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            
+            switch (button.Name)
+            {
+                
+                case "btn_feedback"://피드백 버튼
+                    //;
+                    break;
+                case "btn_setting"://설정 버튼
+                    //Form_bookmark bookmark = new Form_bookmark();
+                    //bookmark.FormBorderStyle = FormBorderStyle.None;
+                    //bookmark.WindowState = FormWindowState.Normal;
+                    //bookmark.Size = new Size(400,200);
+                    //bookmark.ShowDialog();
+
+                    Form_config config = new Form_config();
+                    config.ShowDialog();
+                    break;
+                default:
+                    break;
+            }
+        }
+
         Form form = null;
         private void btn_click(object sender, EventArgs e)
         {
@@ -54,26 +80,14 @@ namespace WindowsFormsHiWeather
             switch (button.Name)
             {
                 case "btn1"://일기예보 버튼
-                    form.BackColor = Color.Beige;
+                    form.BackColor = Color.AliceBlue;
                     break;
                 case "btn2"://즐겨찾기 버튼
+                    form.BackColor = Color.AliceBlue;
                     form.Controls.Add(pn_create(0, 0));
                     break;
-                case "btn_feedback"://피드백 버튼
-                    //;
-                    break;
-                case "btn_setting"://설정 버튼
-                    //Form_bookmark bookmark = new Form_bookmark();
-                    //bookmark.FormBorderStyle = FormBorderStyle.None;
-                    //bookmark.WindowState = FormWindowState.Normal;
-                    //bookmark.Size = new Size(400,200);
-                    //bookmark.ShowDialog();
-
-                    Form_config config = new Form_config();
-                    config.ShowDialog();
-                    break;
                 default:
-                    form.BackColor = Color.Yellow;
+                    //form.BackColor = Color.Yellow;
                     break;
             }
             panel.Controls.Add(form);
@@ -102,7 +116,6 @@ namespace WindowsFormsHiWeather
             label1.Location = new Point(150, 50);
             label1.Size = new Size(50, 20);
             label1.Font = new Font(FontFamily.GenericSerif, 14.0F);
-
 
             weather.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("sunny");
             weather.SizeMode = PictureBoxSizeMode.StretchImage;

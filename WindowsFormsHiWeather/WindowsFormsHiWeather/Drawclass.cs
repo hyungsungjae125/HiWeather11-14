@@ -34,6 +34,48 @@ namespace WindowsFormsHiWeather
             btn.Location = new Point(bc.PX, bc.PY);
             btn.Cursor = Cursors.Hand;
             btn.Click += bc.eh;
+
+            Image btn_myImage;
+
+            if (bc.Name == "Home")
+            {
+                btn_myImage = (Image)Properties.Resources.ResourceManager.GetObject("Home");
+            }
+            else if (bc.Name == "bookmark")
+            {
+                btn_myImage = (Image)Properties.Resources.ResourceManager.GetObject("bookmark");
+            }
+            else if (bc.Name == "feedback")
+            {
+                btn_myImage = (Image)Properties.Resources.ResourceManager.GetObject("Feedback");
+            }
+            else if (bc.Name == "option")
+            {
+                btn_myImage = (Image)Properties.Resources.ResourceManager.GetObject("Option");
+            }
+            else if (bc.Name == "rfbtn")
+            {
+                btn_myImage = (Image)Properties.Resources.ResourceManager.GetObject("refresh");
+            }
+            else if (bc.Name == "bmbtn")
+            {
+                btn_myImage = (Image)Properties.Resources.ResourceManager.GetObject("refresh");
+            }
+
+
+
+            ImageList imageList = new ImageList();
+            imageList.ImageSize = new Size(255, 255);
+            imageList.Images.Add(btn_myImage);
+            imageList.ImageSize = new Size(40, 28);
+            imageList.TransparentColor = Color.Transparent;
+
+            btn.ImageIndex = 0;
+            btn.ImageList = imageList;
+            btn.TabStop = false;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+
             return btn;
 
         }

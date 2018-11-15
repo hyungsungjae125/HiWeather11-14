@@ -105,7 +105,7 @@ namespace WindowsFormsHiWeather
                     //bookmark.ShowDialog();
 
                     Form_config config = new Form_config();
-                    //config.Location=this.Location;
+                    config.StartPosition = FormStartPosition.CenterParent;
                     config.ShowDialog();
                     break;
                 default:

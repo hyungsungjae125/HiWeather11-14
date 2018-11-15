@@ -22,6 +22,7 @@ namespace WindowsFormsHiWeather
         }
 
         public string Place { get => place; }
+        public string City { get => city; }
         internal Days[] Days_day { get => days_day; }
         internal Conditions[] Conditions_hour { get => conditions_hour; }
     }

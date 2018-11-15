@@ -70,14 +70,52 @@ namespace WindowsFormsHiWeather
             panel1.Size = new Size(sX, sY);
             panel1.BackColor = Color.Aqua;
 
-
+            PictureBox weather = new PictureBox();
+            PictureBox picture = new PictureBox();
 
 
             TextBox tb = new TextBox();
+
+            tb.Size = new Size(120, 50);
+            tb.Location = new Point(800, 50);
+           
+            tb.ResumeLayout(false);
+            tb.PerformLayout();
+
+
+
+
+            ResumeLayout(false);
+            PerformLayout();
+
+            Lbclass adlb = new Lbclass(this, "adlb", "금천구\n서울 특별시", 130, 70, 400, 30);
+            Lbclass dglb = new Lbclass(this, "dglb", "13˚C", 130, 70, 400, 100);
+
+            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn1_Click);
+            Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn1_Click);
+            Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn1_Click);
             
-            Lbclass lb1 = new Lbclass(this, "lb2", "금천구, 서울 특별시", 150, 70, 300, 70);
-            
-            panel1.Controls.Add(dc.lb1(lb1));
+
+            weather.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("sunny");
+            weather.SizeMode = PictureBoxSizeMode.StretchImage;
+            weather.Location = new Point(300, 30);
+            weather.Size = new Size(100, 100);
+
+            picture.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("dust2");
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            picture.Location = new Point(530, 30);
+            picture.Size = new Size(50, 50);
+
+            panel1.Controls.Add(dc.lb1(adlb));
+            panel1.Controls.Add(dc.lb1(dglb));
+            panel1.Controls.Add(dc.btn1(sbtn));
+            panel1.Controls.Add(dc.btn1(rfbtn));
+            panel1.Controls.Add(dc.btn1(bmbtn));
+            panel1.Controls.Add(tb);
+
+            panel1.Controls.Add(weather);
+            panel1.Controls.Add(picture);
+
             Controls.Add(panel1);
             
         }
@@ -95,6 +133,13 @@ namespace WindowsFormsHiWeather
         {
             MessageBox.Show("피드백");
         }
+        private void btn4_Click(Object o, EventArgs e)
+        {
+            MessageBox.Show("설정");
+        }
+
+    }
+}
 
         /*
         private void Mtab()
@@ -143,10 +188,3 @@ namespace WindowsFormsHiWeather
             // Adds the tab pages to the TabControl.
         }
         */
-        private void btn4_Click(Object o, EventArgs e)
-        {
-            MessageBox.Show("설정");
-        }
-
-    }
-}

@@ -37,6 +37,7 @@ namespace WindowsFormsHiWeather
             return btn;
 
         }
+       
         public Label lb(Lbclass lb)
         {
             Label label  = new Label(); 

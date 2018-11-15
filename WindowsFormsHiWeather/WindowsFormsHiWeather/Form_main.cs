@@ -21,8 +21,15 @@ namespace WindowsFormsHiWeather
         {
             InitializeComponent();
             Load += Form_main_Load;
+            form = new Form();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.BackColor = Color.AliceBlue;
+            mainPrint(0,0,1000,600);
         }
         Panel panel;
+        
         private void Form_main_Load(object sender, EventArgs e)
         {
             this.IsMdiContainer = true;
@@ -134,11 +141,11 @@ namespace WindowsFormsHiWeather
             {
                 case "btn1"://일기예보 버튼
                     form.BackColor = Color.AliceBlue;
-                    mainPrint();
+                    mainPrint(0,0,1000,600);
                     break;
                 case "btn2"://즐겨찾기 버튼
                     form.BackColor = Color.AliceBlue;
-                    if (pn_create()) ;
+                    if (pn_create());
                     //form.Controls.Add(pn_create());
                     break;
                 default:
@@ -148,16 +155,67 @@ namespace WindowsFormsHiWeather
             panel.Controls.Add(form);
             form.Show();
         }
-        private void mainPrint()
+
+        Panel panel1;
+        Drawclass dc = new Drawclass();
+
+        private void mainPrint(int x,int y,int width,int height)
         {
-            Drawclass dc = new Drawclass();
+            panel1 = new Panel();
 
-            Lbclass lb1 = new Lbclass(this, "lb_day", "일일", 200, 40, 10, 200);
-            Lbclass lb2 = new Lbclass(this, "lb_hour", "시간별", 200, 40, 10, 300);
+            panel1.Location = new Point(x, y);
+            panel1.Size = new Size(width, height);
+            panel1.BackColor = Color.Aqua;
 
-            form.Controls.Add(dc.lb1(lb1));
-            form.Controls.Add(dc.lb1(lb2));
+            PictureBox weather = new PictureBox();
+            PictureBox picture = new PictureBox();
+
+            TextBox tb = new TextBox();
+
+            tb.Size = new Size(120, 50);
+            tb.Location = new Point(800, 50);
+
+            tb.ResumeLayout(false);
+            tb.PerformLayout();
+
+            ResumeLayout(false);
+            PerformLayout();
+
+            Lbclass adlb = new Lbclass(this, "adlb", "금천구\n서울 특별시", 130, 70, 400, 30);
+            Lbclass dglb = new Lbclass(this, "dglb", "13˚C", 130, 70, 400, 100);
+
+            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn1_Click);
+            Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn1_Click);
+            Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn1_Click);
+
+            weather.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("sunny");
+            weather.SizeMode = PictureBoxSizeMode.StretchImage;
+            weather.Location = new Point(300, 30);
+            weather.Size = new Size(100, 100);
+
+            picture.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust2");
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            picture.Location = new Point(530, 30);
+            picture.Size = new Size(50, 50);
+
+
+            panel1.Controls.Add(dc.lb1(adlb));
+            panel1.Controls.Add(dc.lb1(dglb));
+            panel1.Controls.Add(dc.btn1(sbtn));
+            panel1.Controls.Add(dc.btn1(rfbtn));
+            panel1.Controls.Add(dc.btn1(bmbtn));
+            panel1.Controls.Add(tb);
+            panel1.Controls.Add(weather);
+            panel1.Controls.Add(picture);
+
+            form.Controls.Add(panel1);
         }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private bool pn_create()
         {
             Panel p = new Panel();
@@ -166,7 +224,7 @@ namespace WindowsFormsHiWeather
             PictureBox weather = new PictureBox();
             PictureBox picture = new PictureBox();
             ((Weather)weatherlist[0]).Book = true;
-            ((Weather)weatherlist[1]).Book = true;
+            
             for (int a=0,i = 0, j = 0 ; a < weatherlist.Count; a++)
             {
                 i = a % 2;

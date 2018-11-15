@@ -135,9 +135,6 @@
     <None Include="Resources\snow.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Star.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\sunny.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Star.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -63,16 +63,6 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap bookmark {
-            get {
-                object obj = ResourceManager.GetObject("bookmark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap cloudy {
             get {
                 object obj = ResourceManager.GetObject("cloudy", resourceCulture);
@@ -83,9 +73,9 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap Feedback {
+        internal static System.Drawing.Bitmap config_image {
             get {
-                object obj = ResourceManager.GetObject("Feedback", resourceCulture);
+                object obj = ResourceManager.GetObject("config_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +83,9 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap Home {
+        internal static System.Drawing.Bitmap dust1 {
             get {
-                object obj = ResourceManager.GetObject("Home", resourceCulture);
+                object obj = ResourceManager.GetObject("dust1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +93,9 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap Option {
+        internal static System.Drawing.Bitmap dust2 {
             get {
-                object obj = ResourceManager.GetObject("Option", resourceCulture);
+                object obj = ResourceManager.GetObject("dust2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +103,39 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap rain {
+        internal static System.Drawing.Bitmap dust3 {
             get {
-                object obj = ResourceManager.GetObject("rain", resourceCulture);
+                object obj = ResourceManager.GetObject("dust3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap dust4 {
+            get {
+                object obj = ResourceManager.GetObject("dust4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap FORECA {
+            get {
+                object obj = ResourceManager.GetObject("FORECA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Kweather {
+            get {
+                object obj = ResourceManager.GetObject("Kweather", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,26 +153,6 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap snow {
-            get {
-                object obj = ResourceManager.GetObject("snow", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap Star {
-            get {
-                object obj = ResourceManager.GetObject("Star", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap sunny {
             get {
                 object obj = ResourceManager.GetObject("sunny", resourceCulture);
@@ -163,9 +163,29 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap thunder {
+        internal static System.Drawing.Bitmap 날씨전체 {
             get {
-                object obj = ResourceManager.GetObject("thunder", resourceCulture);
+                object obj = ResourceManager.GetObject("날씨전체", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 날씨전체2 {
+            get {
+                object obj = ResourceManager.GetObject("날씨전체2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 즐찾화면 {
+            get {
+                object obj = ResourceManager.GetObject("즐찾화면", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

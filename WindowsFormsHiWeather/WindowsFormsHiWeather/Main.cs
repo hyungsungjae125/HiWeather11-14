@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,13 @@ namespace WindowsFormsHiWeather
 {
     public partial class Main : Form
     {
+
+
+        Form form = null;
+        ArrayList weatherlist = new ArrayList();//장소에대한 리스트
+        Days[] days = new Days[8];//장소에 대한 일별 세부사항 리스트
+        Conditions[] hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
+
         public Main()
         {
            
@@ -24,6 +32,48 @@ namespace WindowsFormsHiWeather
         {
             IsMdiContainer = true;
             Size = new Size(1000, 600);
+
+            //==================================================
+            //금천구 날씨추가
+            days[0] = new Days(15, "부분적으로 맑음", 15, 5);
+            days[1] = new Days(16, "부분적으로 맑음", 13, -3);
+            days[2] = new Days(17, "부분적으로 맑음", 10, -2);
+            days[3] = new Days(18, "부분적으로 맑음", 12, 3);
+            days[4] = new Days(19, "맑음", 13, -1);
+            days[5] = new Days(20, "대체로 흐림", 10, 1);
+            days[6] = new Days(21, "부분적으로 맑음", 10, -1);
+            hours[0] = new Conditions(0, "대체로 흐림", 14, 0, 49, 2, "북서");
+            hours[1] = new Conditions(3, "대체로 흐림", 14, 0, 53, 2, "북");
+            hours[2] = new Conditions(6, "부분적으로 맑음", 14, 0, 47, 2, "북서");
+            hours[3] = new Conditions(9, "부분적으로 맑음", 14, 0, 46, 2, "북서");
+            hours[4] = new Conditions(12, "부분적으로 맑음", 14, 0, 43, 2, "북서");
+            hours[5] = new Conditions(15, "부분적으로 맑음", 14, 0, 40, 2, "북");
+            hours[6] = new Conditions(18, "대체로 흐림", 14, 0, 40, 2, "북동");
+            hours[7] = new Conditions(21, "대체로 흐림", 14, 0, 42, 2, "북동");
+
+            weatherlist.Add(new Weather("금천구", "서울특별시", days, hours));
+            //==================================================
+
+            //==================================================
+            //관악구 날씨추가
+            days[0] = new Days(15, "부분적으로 맑음", 15, 5);
+            days[1] = new Days(16, "부분적으로 맑음", 13, -3);
+            days[2] = new Days(17, "부분적으로 맑음", 10, -2);
+            days[3] = new Days(18, "부분적으로 맑음", 12, 3);
+            days[4] = new Days(19, "맑음", 13, -1);
+            days[5] = new Days(20, "대체로 흐림", 10, 1);
+            days[6] = new Days(21, "부분적으로 맑음", 10, -1);
+            hours[0] = new Conditions(0, "대체로 흐림", 5, 0, 49, 2, "북서");
+            hours[1] = new Conditions(3, "대체로 흐림", 7, 0, 53, 2, "북");
+            hours[2] = new Conditions(6, "부분적으로 맑음", 8, 0, 47, 2, "북서");
+            hours[3] = new Conditions(9, "부분적으로 맑음", 11, 0, 46, 2, "북서");
+            hours[4] = new Conditions(12, "부분적으로 맑음", 14, 0, 43, 2, "북서");
+            hours[5] = new Conditions(15, "부분적으로 맑음", 12, 0, 40, 2, "북");
+            hours[6] = new Conditions(18, "대체로 흐림", 11, 0, 40, 2, "북동");
+            hours[7] = new Conditions(21, "대체로 흐림", 8, 0, 42, 2, "북동");
+
+            weatherlist.Add(new Weather("관악구", "서울특별시", days, hours));
+
             MenuPan(1000,70,0,0);
             MainPan(1000, 530, 0, 70);
            
@@ -96,6 +146,27 @@ namespace WindowsFormsHiWeather
             picture.Location = new Point(530, 30);
             picture.Size = new Size(50, 50);
 
+            Lbclass lb = new Lbclass(this, "lb", "시간별", 100, 30, 10, 120);
+            for (int i=0; i< ((Weather)weatherlist[0]).Conditions_hour.Length; i++)
+            {
+                
+                Lbclass hour_lb = new Lbclass(this, "hour_lb", ((Weather)weatherlist[0]).Conditions_hour[i].Hour.ToString() + "시", 40, 20, 35 + (i * 120), 160);
+                Lbclass tmp_lb = new Lbclass(this, "tmp_lb", ((Weather)weatherlist[0]).Conditions_hour[i].Temperature.ToString() + "˚C", 30, 20, 65 + (i * 120), 195);
+                Lbclass con_lb = new Lbclass(this, "con_lb", ((Weather)weatherlist[0]).Conditions_hour[i].Condition, 50, 40, 15 + (i * 120), 220);
+                PictureBox picture_con = new PictureBox();
+
+                picture_con.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.sunny;
+                picture_con.SizeMode = PictureBoxSizeMode.StretchImage;
+                picture_con.ClientSize = new Size(40, 40);
+                picture_con.Location = new Point(24 + (i * 120), 180);
+ 
+                
+                panel1.Controls.Add(dc.lb(tmp_lb));
+                panel1.Controls.Add(dc.lb(con_lb));
+                panel1.Controls.Add(dc.lb(hour_lb));
+                panel1.Controls.Add(picture_con);
+            }
+            panel1.Controls.Add(dc.lb1(lb));
 
             panel1.Controls.Add(dc.lb1(adlb));
             panel1.Controls.Add(dc.lb1(dglb));
@@ -105,11 +176,13 @@ namespace WindowsFormsHiWeather
             panel1.Controls.Add(tb);
             panel1.Controls.Add(weather);
             panel1.Controls.Add(picture);
+            
+            
 
             Controls.Add(panel1);
             
         }
-        Form form = new Form();
+        //Form form = new Form();
         private void btn1_Click(Object o, EventArgs e)
         {
             MessageBox.Show("홈");

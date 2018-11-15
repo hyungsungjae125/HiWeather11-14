@@ -10,9 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsHiWeather
+namespace Hiweather
 {
-
     public partial class Form_config : Form
     {
         public Form_config()
@@ -39,9 +38,9 @@ namespace WindowsFormsHiWeather
             ArrayList arrList = new ArrayList();
             BackColor = Color.AliceBlue;
 
-            arrList.Add(new Item("window_button", 700, 20, "window1"));
-            arrList.Add(new Item("window_button", 723, 20, "window2"));
-            arrList.Add(new Item("window_button", 746, 20, "window3"));
+            //arrList.Add(new Item("window_button", 700, 20, "window1"));
+            //arrList.Add(new Item("window_button", 725, 20, "window2"));
+            //arrList.Add(new Item("window_button", 750, 20, "window3"));
 
             arrList.Add(new Item("label", 50, 20, "설정"));
             arrList.Add(new Item("label", 50, 220, "온도표시단위"));
@@ -72,45 +71,7 @@ namespace WindowsFormsHiWeather
 
             switch (item.getType())
             {
-                case "window_button":
-                    btn = new Button();
-                    btn.DialogResult = DialogResult.OK;
-                    btn.Cursor = Cursors.Hand;
-                    btn.Click += btn_click;
 
-                    System.Drawing.Image window_myImage;
-
-                    if (item.getTxt() == "window1")
-                    {
-                        window_myImage = Image.FromFile("C:\\image_src\\minimization.png");
-                    }
-                    else if (item.getTxt() == "window2")
-                    {
-                        window_myImage = Image.FromFile("C:\\image_src\\minisize.png");
-                    }
-                    else //if (item.getTxt() == "window3")
-                    {
-                        window_myImage = Image.FromFile("C:\\image_src\\exit.png");
-                    }
-
-
-                    ImageList window_imageList = new ImageList();
-
-                    window_imageList.ImageSize = new Size(255, 255);
-                    window_imageList.Images.Add(window_myImage);
-                    window_imageList.ImageSize = new System.Drawing.Size(40, 28);
-                    window_imageList.TransparentColor = System.Drawing.Color.Transparent;
-
-                    btn.ImageIndex = 0;
-                    btn.ImageList = window_imageList;
-
-                    // Give the button a flat appearance.
-                    btn.TabStop = false;
-                    btn.FlatStyle = FlatStyle.Flat;
-                    btn.FlatAppearance.BorderSize = 0;
-
-                    ctr = btn;
-                    break;
                 case "button":
                     btn = new Button();
                     btn.DialogResult = DialogResult.OK;
@@ -125,7 +86,7 @@ namespace WindowsFormsHiWeather
                     btn.Click += btn_click;
 
                     //System.Drawing.Image myImage = Image.FromFile (System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + @"\Image.gif");
-                    System.Drawing.Image myImage = Image.FromFile("C:\\image_src\\search_button.png");
+                    System.Drawing.Image myImage = (Image)Hiweather.Properties.Resources.ResourceManager.GetObject("search_button");
 
                     ImageList imageList1 = new ImageList();
                     //imageList1.Images.Add(Image.FromFile("C:\\search_button.bmp"));
@@ -185,7 +146,7 @@ namespace WindowsFormsHiWeather
 
             ctr.Name = item.getTxt();
 
-            if (ctrType != "search_button" && ctrType != "window_button")
+            if (ctrType != "search_button")
             {
                 ctr.Text = item.getTxt();
             }
@@ -253,14 +214,14 @@ namespace WindowsFormsHiWeather
         private void btn_click(object o, EventArgs a)
         {
             string names = "";
-            //foreach (Control ct in Controls)
-            //{
-            //    // names += ct.Name + " ";
-            //    //if(ct.Name != "btn_3")
-            //    //{
-            //    ct.BackColor = Color.Silver;
-            //    //}                
-            //}
+            foreach (Control ct in Controls)
+            {
+                // names += ct.Name + " ";
+                //if(ct.Name != "btn_3")
+                //{
+                ct.BackColor = Color.Silver;
+                //}                
+            }
             // 생성한 버튼 연결
             btn = (Button)o;
             //btn.BackColor = (btn.BackColor == Color.Green) ? btn.BackColor = Color.Silver : btn.BackColor = Color.Green;                     
@@ -334,5 +295,7 @@ public class Item
     public string getTxt()
     {
         return txt;
+
     }
+
 }

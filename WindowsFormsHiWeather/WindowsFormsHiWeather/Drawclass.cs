@@ -29,64 +29,11 @@ namespace WindowsFormsHiWeather
             Button btn = new Button();
             btn.DialogResult = DialogResult.OK;
             btn.Name = bc.Name;
-            btn.Text = "";
+            btn.Text = bc.Text;
             btn.Size = new Size(bc.SX, bc.SY);
             btn.Location = new Point(bc.PX, bc.PY);
             btn.Cursor = Cursors.Hand;
             btn.Click += bc.eh;
-
-            Image btn_myImage;
-            
-            //btn_myImage = (Image)Properties.Resources.ResourceManager.GetObject("Home");
-
-            if (btn.Name == "Home")
-            {
-                btn_myImage = (Image)Properties.Resources.Home;
-                MessageBox.Show(bc.Name);
-            }
-            else if (btn.Name == "bookmark")
-            {
-                btn_myImage = (Image)Properties.Resources.bookmark;
-                MessageBox.Show(bc.Name);
-            }
-            else if (btn.Name == "feedback")
-            {
-                btn_myImage = (Image)Properties.Resources.feedback;
-                MessageBox.Show(bc.Name);
-            }
-            else if (btn.Name == "option")
-            {
-                btn_myImage = (Image)Properties.Resources.setting;
-                MessageBox.Show(bc.Name);
-            }
-            else if (btn.Name == "rfbtn")
-            {
-                btn_myImage = (Image)Properties.Resources.refresh;
-                MessageBox.Show(bc.Name);
-            }
-            else if(btn.Name == "bmbtn")
-            {
-                btn_myImage = (Image)Properties.Resources.Star;
-                MessageBox.Show(bc.Name);
-            }
-            else
-            {
-                btn_myImage = (Image)Properties.Resources.search_button;
-            }
-
-            //MessageBox.Show("패스");
-            ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(255, 255);
-            imageList.Images.Add(btn_myImage);
-            imageList.ImageSize = new Size(40, 28);
-            imageList.TransparentColor = Color.Transparent;
-
-            btn.ImageIndex = 0;
-            btn.ImageList = imageList;
-            btn.TabStop = false;
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.FlatAppearance.BorderSize = 0;
-
             return btn;
 
         }

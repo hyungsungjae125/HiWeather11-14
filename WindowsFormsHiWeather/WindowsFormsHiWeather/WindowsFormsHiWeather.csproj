@@ -66,6 +66,12 @@
     <Compile Include="Form_config.Designer.cs">
       <DependentUpon>Form_config.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_main.Designer.cs">
+      <DependentUpon>Form_main.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lbclass.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>

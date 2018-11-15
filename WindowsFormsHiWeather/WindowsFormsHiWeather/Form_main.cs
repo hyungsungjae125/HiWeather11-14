@@ -13,20 +13,16 @@ namespace WindowsFormsHiWeather
 {
     public partial class Form_main : Form
     {
-
+        Form form = null;
         ArrayList weatherlist = new ArrayList();//장소에대한 리스트
         Days[] days = new Days[8];//장소에 대한 일별 세부사항 리스트
         Conditions[] hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
+
         public Form_main()
         {
             InitializeComponent();
             Load += Form_main_Load;
-            form = new Form();
-            form.MdiParent = this;
-            form.WindowState = FormWindowState.Maximized;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.BackColor = Color.AliceBlue;
-            mainPrint(0,0,1000,600);
+
         }
         Panel panel;
         
@@ -34,6 +30,14 @@ namespace WindowsFormsHiWeather
         {
             this.IsMdiContainer = true;
             this.Size = new Size(1000, 600);
+
+            form = new Form();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.BackColor = Color.AliceBlue;
+            mainPrint(0, 0, 1000, 600);
+            
             //this.BackColor = Color.AliceBlue;
             //==================================================
             //금천구 날씨추가
@@ -82,11 +86,12 @@ namespace WindowsFormsHiWeather
             panel.Location = new Point(0, 100);
             panel.BackColor = Color.AliceBlue;
             Controls.Add(panel);
-
+            panel.Controls.Add(form);
+            form.Show();
             Drawclass d = new Drawclass();
             
             Button  button = d.btn1(new Btnclass(this, "btn1", "일기예보", 200, 100, 0, 0, btn_click));
-            
+            button.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("Home3");
             this.Controls.Add(button);
             this.Controls.Add(d.btn1(new Btnclass(this, "btn2", "즐겨찾기", 200, 100, 200, 0, btn_click)));
             this.Controls.Add(d.btn1(new Btnclass(this, "btn_feedback", "피드백", 60, 40, 800, 20, btn2_click)));
@@ -120,7 +125,7 @@ namespace WindowsFormsHiWeather
             }
         }
 
-        Form form = null;
+        
         private void btn_click(object sender, EventArgs e)
         {
             if (form != null)
@@ -165,7 +170,7 @@ namespace WindowsFormsHiWeather
 
             panel1.Location = new Point(x, y);
             panel1.Size = new Size(width, height);
-            panel1.BackColor = Color.Aqua;
+            panel1.BackColor = Color.AliceBlue;
 
             PictureBox weather = new PictureBox();
             PictureBox picture = new PictureBox();
@@ -199,8 +204,8 @@ namespace WindowsFormsHiWeather
             picture.Size = new Size(50, 50);
 
 
-            panel1.Controls.Add(dc.lb1(adlb));
-            panel1.Controls.Add(dc.lb1(dglb));
+            panel1.Controls.Add(dc.lb2(adlb));
+            panel1.Controls.Add(dc.lb2(dglb));
             panel1.Controls.Add(dc.btn1(sbtn));
             panel1.Controls.Add(dc.btn1(rfbtn));
             panel1.Controls.Add(dc.btn1(bmbtn));
@@ -224,7 +229,7 @@ namespace WindowsFormsHiWeather
             PictureBox weather = new PictureBox();
             PictureBox picture = new PictureBox();
             ((Weather)weatherlist[0]).Book = true;
-            
+            //((Weather)weatherlist[1]).Book = true;
             for (int a=0,i = 0, j = 0 ; a < weatherlist.Count; a++)
             {
                 i = a % 2;

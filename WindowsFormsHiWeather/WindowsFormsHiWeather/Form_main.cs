@@ -63,14 +63,14 @@ namespace WindowsFormsHiWeather
                     //;
                     break;
                 case "btn_setting"://설정 버튼
-                    Form_bookmark bookmark = new Form_bookmark();
-                    bookmark.FormBorderStyle = FormBorderStyle.None;
-                    bookmark.WindowState = FormWindowState.Normal;
-                    bookmark.Size = new Size(400,200);
-                    bookmark.ShowDialog();
+                    //Form_bookmark bookmark = new Form_bookmark();
+                    //bookmark.FormBorderStyle = FormBorderStyle.None;
+                    //bookmark.WindowState = FormWindowState.Normal;
+                    //bookmark.Size = new Size(400,200);
+                    //bookmark.ShowDialog();
 
-                    //Form_config config = new Form_config();
-                    //config.ShowDialog();
+                    Form_config config = new Form_config();
+                    config.ShowDialog();
                     break;
                 default:
                     form.BackColor = Color.Yellow;

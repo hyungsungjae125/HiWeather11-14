@@ -9,18 +9,20 @@ namespace WindowsFormsHiWeather
     class Weather
     {
         string place;//장소
-        Conditions[] day;//날짜
-        Conditions[] hour;//시간
+        string city;
+        Days[] days_day;//날짜
+        Conditions[] conditions_hour;//시간
 
-        public Weather(string place, Conditions[] conditions_day, Conditions[] conditions_hour)
+        public Weather(string place,string city , Days[] days_day, Conditions[] conditions_hour)
         {
             this.place = place;
-            day = conditions_day;
-            hour = conditions_hour;
+            this.city = city;
+            this.days_day = days_day;
+            this.conditions_hour = conditions_hour;
         }
 
         public string Place { get => place; }
-        internal Conditions[] Day { get => day; }
-        internal Conditions[] Hour { get => hour; }
+        internal Days[] Days_day { get => days_day; }
+        internal Conditions[] Conditions_hour { get => conditions_hour; }
     }
 }

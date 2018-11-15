@@ -29,11 +29,12 @@ namespace WindowsFormsHiWeather
             
         }
         Panel panel1;
+        Drawclass dc = new Drawclass();
         private void MenuPan(int sX,int sY,int pX,int pY)
         {
             
 
-            Drawclass dc = new Drawclass();
+            
 
             Btnclass bt1 = new Btnclass(this, "Home", "홈", 80,70, 0, 0, btn1_Click);
             Btnclass bt2 = new Btnclass(this, "bookmark", "즐겨찾기", 80, 70, 80, 0, btn2_Click);
@@ -69,15 +70,14 @@ namespace WindowsFormsHiWeather
             panel1.Size = new Size(sX, sY);
             panel1.BackColor = Color.Aqua;
 
-            Drawclass dc = new Drawclass();
 
-            Lbclass lb1 = new Lbclass(this, "lb1", "일기예보", 60, 40, 50, 0);
-            Lbclass lb2 = new Lbclass(this, "lb2", "금천구, 서울 특별시", 120, 40, 400, 70);
-            
-            
 
+
+            TextBox tb = new TextBox();
+            
+            Lbclass lb1 = new Lbclass(this, "lb2", "금천구, 서울 특별시", 150, 70, 300, 70);
+            
             panel1.Controls.Add(dc.lb1(lb1));
-            panel1.Controls.Add(dc.lb1(lb2));
             Controls.Add(panel1);
             
         }

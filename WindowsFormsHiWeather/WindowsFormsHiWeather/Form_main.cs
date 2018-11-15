@@ -15,7 +15,7 @@ namespace WindowsFormsHiWeather
     {
 
         ArrayList weatherlist = new ArrayList();//장소에대한 리스트
-        Days[] days = new Days[8];//장소에 대한 일별 세부사항 리스트
+        Days[] days = new Days[7];//장소에 대한 일별 세부사항 리스트
         Conditions[] hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
         public Form_main()
         {
@@ -30,7 +30,7 @@ namespace WindowsFormsHiWeather
             //this.BackColor = Color.AliceBlue;
             //==================================================
             //금천구 날씨추가
-            days[0]=new Days(15, "부분적으로 맑음", 15,5);
+            days[0] =new Days(15, "부분적으로 맑음", 15,5);
             days[1] = new Days(16, "부분적으로 맑음", 13,-3);
             days[2] = new Days(17, "부분적으로 맑음", 10,-2);
             days[3] = new Days(18, "부분적으로 맑음", 12,3);
@@ -52,7 +52,7 @@ namespace WindowsFormsHiWeather
             //==================================================
             //관악구 날씨추가
             days[0] = new Days(15, "부분적으로 맑음", 15, 5);
-            days[1] = new Days(16, "부분적으로 맑음", 13, -3);
+            days[1] = new Days(16,"부분적으로 맑음", 13, -3);
             days[2] = new Days(17, "부분적으로 맑음", 10, -2);
             days[3] = new Days(18, "부분적으로 맑음", 12, 3);
             days[4] = new Days(19, "맑음", 13, -1);

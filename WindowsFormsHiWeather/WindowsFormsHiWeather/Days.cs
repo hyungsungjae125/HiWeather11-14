@@ -21,5 +21,10 @@ namespace WindowsFormsHiWeather
             this.toptemperature = toptemperature;
             this.bottomtemperature = bottomtemperature;
         }
+
+        public int Day { get => day; }
+        public string Condition { get => condition; }
+        public int Toptemperature { get => toptemperature; }
+        public int Bottomtemperature { get => bottomtemperature; }
     }
 }

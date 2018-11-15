@@ -48,14 +48,14 @@ namespace WindowsFormsHiWeather
             lb.Form.Controls.Add(label);
             return label;
         }
-        public Label lb1(Lbclass lb)
+        public Label lb1(Lbclass lb,float tSize)
         {
             Label label = new Label();
             label.Name = lb.Name;
             label.Text = lb.Text;
             label.Size = new Size(lb.SX, lb.SY);
             label.Location = new Point(lb.PX, lb.PY);
-            label.Font = new Font(FontFamily.GenericSansSerif, 20.0F, FontStyle.Bold);
+            label.Font = new Font(FontFamily.GenericSansSerif, tSize, FontStyle.Bold);
             label.ForeColor = Color.White;
             return label;
         }

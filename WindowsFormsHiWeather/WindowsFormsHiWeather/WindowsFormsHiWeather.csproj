@@ -128,5 +128,11 @@
   <ItemGroup>
     <None Include="Resources\thunder.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_button.png.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_button.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

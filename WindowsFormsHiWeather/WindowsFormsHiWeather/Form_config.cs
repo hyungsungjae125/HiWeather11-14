@@ -86,7 +86,7 @@ namespace WindowsFormsHiWeather
                     btn.Click += btn_click;
 
                     //System.Drawing.Image myImage = Image.FromFile (System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + @"\Image.gif");
-                    System.Drawing.Image myImage = (Image)Hiweather.Properties.Resources.ResourceManager.GetObject("search_button");
+                    System.Drawing.Image myImage = (Image)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("search_button");
 
                     ImageList imageList1 = new ImageList();
                     //imageList1.Images.Add(Image.FromFile("C:\\search_button.bmp"));

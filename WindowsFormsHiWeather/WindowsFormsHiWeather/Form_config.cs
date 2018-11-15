@@ -14,6 +14,7 @@ namespace WindowsFormsHiWeather
 {
     public partial class Form_config : Form
     {
+
         public Form_config()
         {
             InitializeComponent();

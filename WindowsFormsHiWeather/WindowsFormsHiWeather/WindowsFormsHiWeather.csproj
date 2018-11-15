@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Btnclass.cs" />
     <Compile Include="Conditions.cs" />
+    <Compile Include="Days.cs" />
     <Compile Include="Drawclass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

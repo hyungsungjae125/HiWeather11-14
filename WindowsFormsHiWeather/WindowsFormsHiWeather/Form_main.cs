@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,10 @@ namespace WindowsFormsHiWeather
 {
     public partial class Form_main : Form
     {
+
+        ArrayList weatherlist = new ArrayList();//장소에대한 리스트
+        Days[] days = new Days[8];//장소에 대한 일별 세부사항 리스트
+        Conditions[] hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
         public Form_main()
         {
             InitializeComponent();
@@ -22,6 +27,48 @@ namespace WindowsFormsHiWeather
         {
             this.IsMdiContainer = true;
             this.Size = new Size(1000, 600);
+
+            //==================================================
+            //금천구 날씨추가
+            days[0]=new Days(15, "부분적으로 맑음", 15,5);
+            days[1] = new Days(16, "부분적으로 맑음", 13,-3);
+            days[2] = new Days(17, "부분적으로 맑음", 10,-2);
+            days[3] = new Days(18, "부분적으로 맑음", 12,3);
+            days[4] = new Days(19, "맑음", 13,-1);
+            days[5] = new Days(20, "대체로 흐림", 10,1);
+            days[6] = new Days(21, "부분적으로 맑음", 10,-1);
+            hours[0] = new Conditions(0, "대체로 흐림", 14, 0, 49, 2, "북서");
+            hours[1] = new Conditions(3, "대체로 흐림", 14, 0, 53, 2, "북");
+            hours[2] = new Conditions(6, "부분적으로 맑음", 14, 0, 47, 2, "북서");
+            hours[3] = new Conditions(9, "부분적으로 맑음", 14, 0, 46, 2, "북서");
+            hours[4] = new Conditions(12, "부분적으로 맑음", 14, 0, 43, 2, "북서");
+            hours[5] = new Conditions(15, "부분적으로 맑음", 14, 0, 40, 2, "북");
+            hours[6] = new Conditions(18, "대체로 흐림", 14, 0, 40, 2, "북동");
+            hours[7] = new Conditions(21, "대체로 흐림", 14, 0, 42, 2, "북동");
+            
+            weatherlist.Add(new Weather("금천구", "서울특별시", days, hours));
+            //==================================================
+
+            //==================================================
+            //관악구 날씨추가
+            days[0] = new Days(15, "부분적으로 맑음", 15, 5);
+            days[1] = new Days(16, "부분적으로 맑음", 13, -3);
+            days[2] = new Days(17, "부분적으로 맑음", 10, -2);
+            days[3] = new Days(18, "부분적으로 맑음", 12, 3);
+            days[4] = new Days(19, "맑음", 13, -1);
+            days[5] = new Days(20, "대체로 흐림", 10, 1);
+            days[6] = new Days(21, "부분적으로 맑음", 10, -1);
+            hours[0] = new Conditions(0, "대체로 흐림", 14, 0, 49, 2, "북서");
+            hours[1] = new Conditions(3, "대체로 흐림", 14, 0, 53, 2, "북");
+            hours[2] = new Conditions(6, "부분적으로 맑음", 14, 0, 47, 2, "북서");
+            hours[3] = new Conditions(9, "부분적으로 맑음", 14, 0, 46, 2, "북서");
+            hours[4] = new Conditions(12, "부분적으로 맑음", 14, 0, 43, 2, "북서");
+            hours[5] = new Conditions(15, "부분적으로 맑음", 14, 0, 40, 2, "북");
+            hours[6] = new Conditions(18, "대체로 흐림", 14, 0, 40, 2, "북동");
+            hours[7] = new Conditions(21, "대체로 흐림", 14, 0, 42, 2, "북동");
+
+            weatherlist.Add(new Weather("관악구", "서울특별시", days, hours));
+            //==================================================
 
             panel = new Panel();
             panel.Size = new Size(1000, 600);

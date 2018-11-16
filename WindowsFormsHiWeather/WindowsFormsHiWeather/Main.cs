@@ -62,7 +62,7 @@ namespace WindowsFormsHiWeather
             days[6] = new Days(21, "부분적으로 맑음", 10, -1);
             hours[0] = new Conditions(0, "대체로 흐림", 5, 0, 49, 2, "북서");
             hours[1] = new Conditions(3, "대체로 흐림", 7, 0, 53, 2, "북");
-            hours[2] = new Conditions(6, "부분적으로 맑음", 8, 0, 47, 2, "북서");
+            hours[2] = new Conditions(6, "부분적으로 맑음", 8, 0, 35, 2, "북서");
             hours[3] = new Conditions(9, "부분적으로 맑음", 11, 0, 46, 2, "북서");
             hours[4] = new Conditions(12, "부분적으로 맑음", 14, 0, 43, 2, "북서");
             hours[5] = new Conditions(15, "부분적으로 맑음", 12, 0, 40, 2, "북");
@@ -154,17 +154,25 @@ namespace WindowsFormsHiWeather
                 Lbclass tmp_lb = new Lbclass(this, "tmp_lb", ((Weather)weatherlist[0]).Conditions_hour[i].Temperature.ToString() + "˚C", 70, 20, 15 + (i * 120), 220);
                 Lbclass con_lb = new Lbclass(this, "con_lb", ((Weather)weatherlist[0]).Conditions_hour[i].Condition, 100, 40, 15 + (i * 120), 240);
                 PictureBox picture_con = new PictureBox();
+                PictureBox picture_dust = new PictureBox();
 
                 picture_con.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.sunny;
                 picture_con.SizeMode = PictureBoxSizeMode.StretchImage;
                 picture_con.ClientSize = new Size(40, 40);
-                picture_con.Location = new Point(24 + (i * 120), 180);
+                picture_con.Location = new Point(10 + (i * 120), 180);
                 picture_con.BackColor = Color.Transparent;
+
+                picture_dust.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.dust2;
+                picture_dust.SizeMode = PictureBoxSizeMode.StretchImage;
+                picture_dust.ClientSize = new Size(40, 40);
+                picture_dust.Location = new Point(50 + (i * 120), 180);
+                picture_dust.BackColor = Color.Transparent;
 
                 panel1.Controls.Add(dc.lb1(tmp_lb,15));
                 panel1.Controls.Add(dc.lb1(con_lb,12));
                 panel1.Controls.Add(dc.lb1(hour_lb,12));
                 panel1.Controls.Add(picture_con);
+                panel1.Controls.Add(picture_dust);
             }
             panel1.Controls.Add(dc.lb2(lb,18));
             Lbclass lb_day = new Lbclass(this, "lb_day", "일별", 100, 30, 10, 280);
@@ -248,7 +256,7 @@ namespace WindowsFormsHiWeather
                     label1.Size = new Size(50, 20);
                     label1.Font = new Font(FontFamily.GenericSerif, 14.0F);
 
-                    switch (((Weather)weatherlist[a]).Conditions_hour[2].Condition)
+                    switch ((((Weather)weatherlist[a]).Conditions_hour[2]).Condition)
                     {
                         case "맑음":
                             weather.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.sunny;
@@ -267,7 +275,7 @@ namespace WindowsFormsHiWeather
                     weather.Location = new Point(10, 10);
                     weather.Size = new Size(100, 100);
 
-                    int dust = ((Weather)weatherlist[a]).Conditions_hour[2].Dust;
+                    int dust = (((Weather)weatherlist[a]).Conditions_hour[2]).Dust;
                     if (dust >= 0 && dust < 30)
                     {
                         picture.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.dust1;
@@ -293,6 +301,7 @@ namespace WindowsFormsHiWeather
                     p.Controls.Add(label1);
                     p.Controls.Add(weather);
                     p.Controls.Add(picture);
+
                     panel2.Controls.Add(p);
                 }
                 if ((a % 2) == 1)

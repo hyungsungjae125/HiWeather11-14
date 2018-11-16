@@ -188,7 +188,7 @@ namespace WindowsFormsHiWeather
                 PictureBox wticon = new PictureBox();
                 PictureBox dusticon = new PictureBox();
                 Lbclass addrlb = new Lbclass(this, "addrlb", days[i].Day.ToString() + "일", 80, 20, 30 + i * 140, 320); // 주소 라벨
-                Lbclass dgrlb = new Lbclass(this, "dgrlb", days[i].Toptemperature + "˚C  " + days[i].Toptemperature.ToString() + "/" + days[i].Bottomtemperature.ToString(), 60, 40, 15 + (i * 140), 390); // 기상 라벨
+                Lbclass dgrlb = new Lbclass(this, "dgrlb", "최고 : "+days[i].Toptemperature + "˚C  "+ "\n최저 : " + days[i].Bottomtemperature.ToString() + "˚C  ", 100, 40, 15 + (i * 140), 390); // 기상 라벨
                 Lbclass cdlb = new Lbclass(this, "cdlb", days[i].Condition, 100, 40, (15 + i * 140), 430);
 
                 dusticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust1");
@@ -234,8 +234,8 @@ namespace WindowsFormsHiWeather
             panel2.BackgroundImageLayout = ImageLayout.Stretch;
             panel2.BackgroundImage = (Bitmap)WindowsFormsHiWeather.Properties.Resources.background;
             panel2.BackColor = Color.Transparent;
-            ((Weather)weatherlist[0]).Book = true;
-            ((Weather)weatherlist[1]).Book = true;
+            //((Weather)weatherlist[0]).Book = true;
+            //((Weather)weatherlist[1]).Book = true;
             for (int a = 0, i = 0, j = 0; a < weatherlist.Count; a++)
             {
                 Panel p = new Panel();
@@ -369,7 +369,15 @@ namespace WindowsFormsHiWeather
                     MessageBox.Show("새로고침");
                     break;
                 case "bmbtn":
-                    MessageBox.Show("즐겨찾기추가");
+                    if (((Weather)weatherlist[0]).Book)
+                    {
+                        MessageBox.Show("즐겨찾기삭제");
+                    }
+                    else
+                    {
+                        MessageBox.Show("즐겨찾기추가");
+                    }
+                     ((Weather)weatherlist[0]).Book = !((Weather)weatherlist[0]).Book;
                     break;
                 default:
                     break;

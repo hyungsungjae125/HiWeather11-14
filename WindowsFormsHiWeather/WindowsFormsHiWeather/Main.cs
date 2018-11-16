@@ -282,12 +282,19 @@ namespace WindowsFormsHiWeather
         Form form = new Form();
         private void btn1_Click(Object o, EventArgs e)
         {
-            MessageBox.Show("홈");
+            MenuPan(1000, 70, 0, 0);
+            MainPan(1000, 530, 0, 70);
+            panel2.Visible = false;
+            panel1.Visible = true;
+
         }
 
         private void btn2_Click(Object o, EventArgs e)
         {
-            MessageBox.Show("즐겨찾기");
+            Book_create();
+            panel1.Visible = false;
+            panel2.Visible = true;
+
         }
         private void btn3_Click(Object o, EventArgs e)
         {
@@ -306,12 +313,15 @@ namespace WindowsFormsHiWeather
         private void btn5_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            switch(button.Name)
+            switch (button.Name)
             {
                 case "sbtn":
                     MessageBox.Show("검색");
                     break;
                 case "rfbtn":
+                    //panel1.Refresh();
+                    MenuPan(1000, 70, 0, 0);
+                    MainPan(1000, 530, 0, 70);
                     MessageBox.Show("새로고침");
                     break;
                 case "bmbtn":
@@ -321,6 +331,7 @@ namespace WindowsFormsHiWeather
                     break;
             }
         }
+
 
 
     }

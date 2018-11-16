@@ -127,22 +127,22 @@ namespace WindowsFormsHiWeather
             ResumeLayout(false);
             PerformLayout();
 
-            Lbclass adlb = new Lbclass(this, "adlb", "금천구\n서울 특별시", 130, 70, 400, 30);
-            Lbclass dglb = new Lbclass(this, "dglb", "13˚C", 130, 70, 400, 100);
-
+            Lbclass adlb = new Lbclass(this, "adlb", ((Weather)weatherlist[0]).Place + ", " + ((Weather)weatherlist[0]).City, 300, 25, 370, 0); // 주소 라벨
+            Lbclass dglb = new Lbclass(this, "dglb", days[0].Toptemperature + "˚C  " + days[0].Toptemperature.ToString() + "/" + days[0].Bottomtemperature.ToString() + " \n" + days[0].Condition, 110, 70, 400, 40); // 기상 라벨
+            
             Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn5_Click);
             Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn5_Click);
             Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
             
             weather.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("sunny");
             weather.SizeMode = PictureBoxSizeMode.StretchImage;
-            weather.Location = new Point(300, 30);
-            weather.Size = new Size(100, 100);
+            weather.Location = new Point(330, 30);
+            weather.Size = new Size(70, 65);
 
             picture.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust2");
             picture.SizeMode = PictureBoxSizeMode.StretchImage;
-            picture.Location = new Point(530, 30);
-            picture.Size = new Size(50, 50);
+            picture.Location = new Point(510, 30);
+            picture.Size = new Size(70, 65);
             
             
               for(int i=0;i<days.Length;i++)
@@ -170,8 +170,8 @@ namespace WindowsFormsHiWeather
                 panel1.Controls.Add(dusticon);
             }
 
-            panel1.Controls.Add(dc.lb1(adlb,20));
-            panel1.Controls.Add(dc.lb1(dglb,15));
+            panel1.Controls.Add(dc.lb1(adlb,18));
+            panel1.Controls.Add(dc.lb1(dglb,13));
             panel1.Controls.Add(dc.btn1(sbtn));
             panel1.Controls.Add(dc.btn1(rfbtn));
             panel1.Controls.Add(dc.btn1(bmbtn));

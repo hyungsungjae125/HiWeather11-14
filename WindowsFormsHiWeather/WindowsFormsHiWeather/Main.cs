@@ -82,9 +82,9 @@ namespace WindowsFormsHiWeather
             Lbclass adlb = new Lbclass(this, "adlb", "금천구\n서울 특별시", 130, 70, 400, 30);
             Lbclass dglb = new Lbclass(this, "dglb", "13˚C", 130, 70, 400, 100);
 
-            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn1_Click);
-            Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn1_Click);
-            Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn1_Click);
+            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn5_Click);
+            Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn5_Click);
+            Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
             
             weather.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("sunny");
             weather.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -109,6 +109,8 @@ namespace WindowsFormsHiWeather
             Controls.Add(panel1);
             
         }
+
+        
         Form form = new Form();
         private void btn1_Click(Object o, EventArgs e)
         {
@@ -121,12 +123,37 @@ namespace WindowsFormsHiWeather
         }
         private void btn3_Click(Object o, EventArgs e)
         {
-            MessageBox.Show("피드백");
+            Form_Feedback feedback = new Form_Feedback();
+            feedback.StartPosition = FormStartPosition.CenterParent;
+            feedback.ShowDialog();
+            //MessageBox.Show("피드백");
         }
         private void btn4_Click(Object o, EventArgs e)
         {
-            MessageBox.Show("설정");
+            Form_config config = new Form_config();
+            config.StartPosition = FormStartPosition.CenterParent;
+            config.ShowDialog();
+            //MessageBox.Show("설정");
         }
+        private void btn5_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            switch(button.Name)
+            {
+                case "sbtn":
+                    MessageBox.Show("검색");
+                    break;
+                case "rfbtn":
+                    MessageBox.Show("새로고침");
+                    break;
+                case "bmbtn":
+                    MessageBox.Show("즐겨찾기추가");
+                    break;
+                default:
+                    break;
+            }
+        }
+
 
     }
 }

@@ -155,8 +155,8 @@ namespace WindowsFormsHiWeather
             Lbclass lb1 = new Lbclass(this, "lb_day", "일일", 200, 40, 10, 200);
             Lbclass lb2 = new Lbclass(this, "lb_hour", "시간별", 200, 40, 10, 300);
 
-            form.Controls.Add(dc.lb1(lb1));
-            form.Controls.Add(dc.lb1(lb2));
+            //form.Controls.Add(dc.lb1(lb1));
+            //form.Controls.Add(dc.lb1(lb2));
         }
         private bool pn_create()
         {

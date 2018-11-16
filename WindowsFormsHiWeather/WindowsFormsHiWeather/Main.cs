@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,10 @@ namespace WindowsFormsHiWeather
 {
     public partial class Main : Form
     {
+
+        ArrayList weatherlist = new ArrayList();//장소에대한 리스트
+        Days[] days = new Days[7];//장소에 대한 일별 세부사항 리스트
+        Conditions[] hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
         public Main()
         {
            
@@ -24,6 +29,49 @@ namespace WindowsFormsHiWeather
         {
             IsMdiContainer = true;
             Size = new Size(1000, 600);
+
+            //==================================================
+            //금천구 날씨추가
+            days[0] = new Days(15, "부분적으로 맑음", 15, 5);
+            days[1] = new Days(16, "부분적으로 맑음", 13, -3);
+            days[2] = new Days(17, "부분적으로 맑음", 10, -2);
+            days[3] = new Days(18, "부분적으로 맑음", 12, 3);
+            days[4] = new Days(19, "맑음", 13, -1);
+            days[5] = new Days(20, "대체로 흐림", 10, 1);
+            days[6] = new Days(21, "부분적으로 맑음", 10, -1);
+            hours[0] = new Conditions(0, "대체로 흐림", 14, 0, 49, 2, "북서");
+            hours[1] = new Conditions(3, "대체로 흐림", 14, 0, 53, 2, "북");
+            hours[2] = new Conditions(6, "부분적으로 맑음", 14, 0, 47, 2, "북서");
+            hours[3] = new Conditions(9, "부분적으로 맑음", 14, 0, 46, 2, "북서");
+            hours[4] = new Conditions(12, "부분적으로 맑음", 14, 0, 43, 2, "북서");
+            hours[5] = new Conditions(15, "부분적으로 맑음", 14, 0, 40, 2, "북");
+            hours[6] = new Conditions(18, "대체로 흐림", 14, 0, 40, 2, "북동");
+            hours[7] = new Conditions(21, "대체로 흐림", 14, 0, 42, 2, "북동");
+
+            weatherlist.Add(new Weather("금천구", "서울특별시", days, hours));
+            //==================================================
+
+            //==================================================
+            //관악구 날씨추가
+            days[0] = new Days(15, "부분적으로 맑음", 15, 5);
+            days[1] = new Days(16, "부분적으로 맑음", 13, -3);
+            days[2] = new Days(17, "부분적으로 맑음", 10, -2);
+            days[3] = new Days(18, "부분적으로 맑음", 12, 3);
+            days[4] = new Days(19, "맑음", 13, -1);
+            days[5] = new Days(20, "대체로 흐림", 10, 1);
+            days[6] = new Days(21, "부분적으로 맑음", 10, -1);
+            hours[0] = new Conditions(0, "대체로 흐림", 5, 0, 49, 2, "북서");
+            hours[1] = new Conditions(3, "대체로 흐림", 7, 0, 53, 2, "북");
+            hours[2] = new Conditions(6, "부분적으로 맑음", 8, 0, 47, 2, "북서");
+            hours[3] = new Conditions(9, "부분적으로 맑음", 11, 0, 46, 2, "북서");
+            hours[4] = new Conditions(12, "부분적으로 맑음", 14, 0, 43, 2, "북서");
+            hours[5] = new Conditions(15, "부분적으로 맑음", 12, 0, 40, 2, "북");
+            hours[6] = new Conditions(18, "대체로 흐림", 11, 0, 40, 2, "북동");
+            hours[7] = new Conditions(21, "대체로 흐림", 8, 0, 42, 2, "북동");
+
+            weatherlist.Add(new Weather("관악구", "서울특별시", days, hours));
+            //==================================================
+
             MenuPan(1000,70,0,0);
             MainPan(1000, 530, 0, 70);
            
@@ -95,10 +143,35 @@ namespace WindowsFormsHiWeather
             picture.SizeMode = PictureBoxSizeMode.StretchImage;
             picture.Location = new Point(530, 30);
             picture.Size = new Size(50, 50);
+            
+            
+              for(int i=0;i<days.Length;i++)
+            {   
+                PictureBox wticon = new PictureBox();
+                 PictureBox dusticon=new PictureBox();
+                Lbclass addrlb =new Lbclass(this, "addrlb", days[i].Day.ToString()+"일", 80, 20, 30+i*140, 300); // 주소 라벨
+                Lbclass dgrlb = new Lbclass(this, "dgrlb", days[i].Toptemperature+"˚C  "+days[i].Toptemperature.ToString()+"/"+days[i].Bottomtemperature.ToString(), 60, 40, 15+(i*140), 370); // 기상 라벨
+                Lbclass cdlb = new Lbclass(this, "cdlb",days[i].Condition, 100, 40, (15+i*140), 410);
+                           
+                 dusticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust1");
+                 dusticon.SizeMode = PictureBoxSizeMode.StretchImage;
+                 dusticon.Location = new Point(55+(i*140), 330);
+                 dusticon.ClientSize = new Size(40, 40);
+                 
+                wticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("sunny");        
+                 wticon.SizeMode = PictureBoxSizeMode.StretchImage;
+                 wticon.Location = new Point(15+(i*140), 330);
+                 wticon.ClientSize = new Size(40, 40);
+                
+                panel1.Controls.Add(dc.lb1(addrlb,15));
+                panel1.Controls.Add(dc.lb1(dgrlb,12));
+                panel1.Controls.Add(dc.lb1(cdlb,12));
+                panel1.Controls.Add(wticon);
+                panel1.Controls.Add(dusticon);
+            }
 
-
-            panel1.Controls.Add(dc.lb1(adlb));
-            panel1.Controls.Add(dc.lb1(dglb));
+            panel1.Controls.Add(dc.lb1(adlb,20));
+            panel1.Controls.Add(dc.lb1(dglb,15));
             panel1.Controls.Add(dc.btn1(sbtn));
             panel1.Controls.Add(dc.btn1(rfbtn));
             panel1.Controls.Add(dc.btn1(bmbtn));

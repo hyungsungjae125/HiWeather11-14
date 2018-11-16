@@ -77,31 +77,29 @@ namespace WindowsFormsHiWeather
            
         }
         Panel panel1;
+        Panel panel2;
+        Panel panel3;
         Drawclass dc = new Drawclass();
 
         private void MenuPan(int sX,int sY,int pX,int pY)
         {
-
+            panel3 = new Panel();
             Btnclass bt1 = new Btnclass(this, "Home", "홈", 80,70, 0, 0, btn1_Click);
             Btnclass bt2 = new Btnclass(this, "bookmark", "즐겨찾기", 80, 70, 80, 0, btn2_Click);
             
             Btnclass bt3 = new Btnclass(this, "feedback", "피드백", 80, 70, 800, 0, btn3_Click);
             Btnclass bt4 = new Btnclass(this, "option", "설정", 80, 70, 880, 0, btn4_Click);
-
-            //Bitmap bit = (Bitmap)WindowsFormsHiWeather.Properties.Resources.ResourceManager.GetObject("cloudy");
-
-            panel1 = new Panel();
             
-            panel1.Location = new Point(pX, pY);
-            panel1.Size = new Size(sX, sY);
-            panel1.BackColor = Color.SkyBlue;
+            panel3.Location = new Point(pX, pY);
+            panel3.Size = new Size(sX, sY);
+            panel3.BackColor = Color.SkyBlue;
 
-            Controls.Add(panel1);
+            Controls.Add(panel3);
 
-            panel1.Controls.Add(dc.btn1(bt1));
-            panel1.Controls.Add(dc.btn1(bt2));
-            panel1.Controls.Add(dc.btn1(bt3));
-            panel1.Controls.Add(dc.btn1(bt4));
+            panel3.Controls.Add(dc.btn1(bt1));
+            panel3.Controls.Add(dc.btn1(bt2));
+            panel3.Controls.Add(dc.btn1(bt3));
+            panel3.Controls.Add(dc.btn1(bt4));
 
         }
         
@@ -111,7 +109,8 @@ namespace WindowsFormsHiWeather
 
             panel1.Location = new Point(pX, pY);
             panel1.Size = new Size(sX, sY);
-            panel1.BackColor = Color.Aqua;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.BackgroundImage = (Bitmap)WindowsFormsHiWeather.Properties.Resources.background;
 
             PictureBox weather = new PictureBox();
             PictureBox picture = new PictureBox();
@@ -128,8 +127,9 @@ namespace WindowsFormsHiWeather
             PerformLayout();
 
             Lbclass adlb = new Lbclass(this, "adlb", ((Weather)weatherlist[0]).Place + ", " + ((Weather)weatherlist[0]).City, 300, 25, 370, 0); // 주소 라벨
-            Lbclass dglb = new Lbclass(this, "dglb", days[0].Toptemperature + "˚C  " + days[0].Toptemperature.ToString() + "/" + days[0].Bottomtemperature.ToString() + " \n" + days[0].Condition, 110, 70, 400, 40); // 기상 라벨
-            
+            Lbclass dglb = new Lbclass(this, "dglb", days[0].Toptemperature + "˚C  " + days[0].Toptemperature.ToString() + "/" + days[0].Bottomtemperature.ToString() + " \n" + days[0].Condition, 110, 50, 400, 40); // 기상 라벨
+            Lbclass timelb = new Lbclass(this, "timelb", "마지막 업데이트: " + DateTime.Now.ToString("HH") + ":" + DateTime.Now.ToString("mm") + ":" + DateTime.Now.ToString("ss"), 200, 20, 350, 100);
+
             Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn5_Click);
             Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn5_Click);
             Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
@@ -178,12 +178,107 @@ namespace WindowsFormsHiWeather
             panel1.Controls.Add(tb);
             panel1.Controls.Add(weather);
             panel1.Controls.Add(picture);
+            panel1.Controls.Add(dc.lb1(timelb, 10));
 
             Controls.Add(panel1);
             
         }
 
-        
+        private bool Book_create()
+        {
+            panel2 = new Panel();
+            panel2.Location = new Point(0, 70);
+            panel2.Size = new Size(1000, 530);
+            //panel1.BackColor = Color.Aqua;
+            panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            panel2.BackgroundImage = (Bitmap)WindowsFormsHiWeather.Properties.Resources.background;
+            panel2.BackColor = Color.Transparent;
+            ((Weather)weatherlist[0]).Book = true;
+            ((Weather)weatherlist[1]).Book = true;
+            for (int a = 0, i = 0, j = 0; a < weatherlist.Count; a++)
+            {
+                Panel p = new Panel();
+                Label label = new Label();
+                Label label1 = new Label();
+                PictureBox weather = new PictureBox();
+                PictureBox picture = new PictureBox();
+                i = a % 2;
+
+                if (((Weather)weatherlist[a]).Book)
+                {
+                    p.Name = "panel" + a + 1;
+
+                    p.Size = new Size(400, 120);
+                    p.BorderStyle = BorderStyle.FixedSingle;
+                    p.Location = new Point(i * 500 + 10, j * 120 + 10);
+
+                    label.Text = ((Weather)weatherlist[a]).Place + ", " + ((Weather)weatherlist[i]).City;
+                    label.Location = new Point(120, 10);
+                    label.Size = new Size(300, 30);
+                    label.Font = new Font(FontFamily.GenericSansSerif, 16.0F, FontStyle.Bold);
+
+                    label1.Text = ((((Weather)weatherlist[a]).Conditions_hour[2]).Temperature).ToString() + "˚C";
+                    label1.Location = new Point(150, 50);
+                    label1.Size = new Size(50, 20);
+                    label1.Font = new Font(FontFamily.GenericSerif, 14.0F);
+
+                    switch (((Weather)weatherlist[a]).Conditions_hour[2].Condition)
+                    {
+                        case "맑음":
+                            weather.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.sunny;
+                            break;
+                        case "부분적으로 맑음":
+                            weather.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.sunny;
+                            break;
+                        case "대체로 흐림":
+                            weather.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.cloudy;
+                            break;
+                        case "비옴":
+                            weather.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.sunny;
+                            break;
+                    }
+                    weather.SizeMode = PictureBoxSizeMode.StretchImage;
+                    weather.Location = new Point(10, 10);
+                    weather.Size = new Size(100, 100);
+
+                    int dust = ((Weather)weatherlist[a]).Conditions_hour[2].Dust;
+                    if (dust >= 0 && dust < 30)
+                    {
+                        picture.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.dust1;
+                    }
+                    else if (dust >= 30 && dust < 60)
+                    {
+                        picture.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.dust2;
+                    }
+                    else if (dust >= 60 && dust < 90)
+                    {
+                        picture.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.dust3;
+                    }
+                    else if (dust >= 90)
+                    {
+                        picture.Image = (Bitmap)WindowsFormsHiWeather.Properties.Resources.dust4;
+                    }
+                    picture.SizeMode = PictureBoxSizeMode.StretchImage;
+                    picture.Location = new Point(200, 45);
+                    picture.Size = new Size(50, 50);
+
+
+                    p.Controls.Add(label);
+                    p.Controls.Add(label1);
+                    p.Controls.Add(weather);
+                    p.Controls.Add(picture);
+                    panel2.Controls.Add(p);
+                }
+                if ((a % 2) == 1)
+                {
+                    j++;
+                }
+
+            }
+            this.Controls.Add(panel2);
+            return true;
+        }
+
         Form form = new Form();
         private void btn1_Click(Object o, EventArgs e)
         {

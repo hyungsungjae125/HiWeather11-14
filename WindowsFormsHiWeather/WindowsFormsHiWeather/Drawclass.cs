@@ -21,6 +21,7 @@ namespace WindowsFormsHiWeather
             btn.Location = new Point(bc.PX, bc.PY);
             btn.Cursor = Cursors.Hand;
             btn.Click += bc.eh;
+            btn.BackColor = Color.Transparent;
             bc.Form.Controls.Add(btn);
             
         }
@@ -96,7 +97,9 @@ namespace WindowsFormsHiWeather
             label.Text = lb.Text;
             label.Size = new Size(lb.SX, lb.SY);
             label.Location = new Point(lb.PX, lb.PY);
+            label.BackColor = Color.Transparent;
             lb.Form.Controls.Add(label);
+
             return label;
         }
         public Label lb1(Lbclass lb,float tSize)
@@ -108,6 +111,7 @@ namespace WindowsFormsHiWeather
             label.Location = new Point(lb.PX, lb.PY);
             label.Font = new Font(FontFamily.GenericSansSerif, tSize, FontStyle.Bold);
             label.ForeColor = Color.White;
+            label.BackColor = Color.Transparent;
             return label;
         }
     }

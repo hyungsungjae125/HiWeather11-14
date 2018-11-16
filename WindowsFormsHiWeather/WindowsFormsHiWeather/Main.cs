@@ -15,8 +15,8 @@ namespace WindowsFormsHiWeather
     {
 
         ArrayList weatherlist = new ArrayList();//장소에대한 리스트
-        Days[] days = new Days[7];//장소에 대한 일별 세부사항 리스트
-        Conditions[] hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
+        Days[] days;//장소에 대한 일별 세부사항 리스트
+        Conditions[] hours;//장소에 대한 시간 세부사항 리스트
         public Main()
         {
 
@@ -32,27 +32,31 @@ namespace WindowsFormsHiWeather
 
             //==================================================
             //금천구 날씨추가
+            days = new Days[7];//장소에 대한 일별 세부사항 리스트
+            hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
             days[0] = new Days(15, "부분적으로 맑음", 15, 5);
             days[1] = new Days(16, "부분적으로 맑음", 13, -3);
             days[2] = new Days(17, "부분적으로 맑음", 10, -2);
             days[3] = new Days(18, "부분적으로 맑음", 12, 3);
             days[4] = new Days(19, "맑음", 13, -1);
             days[5] = new Days(20, "대체로 흐림", 10, 1);
-            days[6] = new Days(21, "부분적으로 맑음", 10, -1);
-            hours[0] = new Conditions(0, "대체로 흐림", 14, 0, 49, 2, "북서");
-            hours[1] = new Conditions(3, "대체로 흐림", 14, 0, 53, 2, "북");
-            hours[2] = new Conditions(6, "부분적으로 맑음", 14, 0, 47, 2, "북서");
-            hours[3] = new Conditions(9, "부분적으로 맑음", 14, 0, 46, 2, "북서");
-            hours[4] = new Conditions(12, "부분적으로 맑음", 14, 0, 43, 2, "북서");
-            hours[5] = new Conditions(15, "부분적으로 맑음", 14, 0, 40, 2, "북");
-            hours[6] = new Conditions(18, "대체로 흐림", 14, 0, 40, 2, "북동");
-            hours[7] = new Conditions(21, "대체로 흐림", 14, 0, 42, 2, "북동");
+            days[6] = new Days(21, "부분적으로 맑음", 12, -1);
+            hours[0] = new Conditions(0, "대체로 흐림", 5, 0, 49, 2, "북서");
+            hours[1] = new Conditions(3, "대체로 흐림", 7, 0, 53, 2, "북");
+            hours[2] = new Conditions(6, "부분적으로 맑음", 9, 0, 47, 2, "북서");
+            hours[3] = new Conditions(9, "부분적으로 맑음", 13, 0, 46, 2, "북서");
+            hours[4] = new Conditions(12, "부분적으로 맑음", 17, 0, 43, 2, "북서");
+            hours[5] = new Conditions(15, "부분적으로 맑음", 14, 0, 45, 2, "북");
+            hours[6] = new Conditions(18, "대체로 흐림", 10, 0, 55, 2, "북동");
+            hours[7] = new Conditions(21, "대체로 흐림", 6, 0, 60, 2, "북동");
 
             weatherlist.Add(new Weather("금천구", "서울특별시", days, hours));
             //==================================================
 
             //==================================================
             //관악구 날씨추가
+            days = new Days[7];//장소에 대한 일별 세부사항 리스트
+            hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
             days[0] = new Days(15, "부분적으로 맑음", 15, 5);
             days[1] = new Days(16, "부분적으로 맑음", 13, -3);
             days[2] = new Days(17, "부분적으로 맑음", 10, -2);
@@ -92,8 +96,10 @@ namespace WindowsFormsHiWeather
 
             panel3.Location = new Point(pX, pY);
             panel3.Size = new Size(sX, sY);
-            panel3.BackColor = Color.LightBlue;
-
+            panel3.BackColor = Color.White;
+            //panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            //panel3.BackgroundImage = (Bitmap)WindowsFormsHiWeather.Properties.Resources.background;
+            //panel3.BackgroundImage = (Bitmap)WindowsFormsHiWeather.Properties.Resources.background1;
             Controls.Add(panel3);
 
             panel3.Controls.Add(dc.btn1(bt1));
@@ -110,7 +116,8 @@ namespace WindowsFormsHiWeather
             panel1.Location = new Point(pX, pY);
             panel1.Size = new Size(sX, sY);
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.BackgroundImage = (Bitmap)WindowsFormsHiWeather.Properties.Resources.background;
+            //panel1.BackgroundImage = (Bitmap)WindowsFormsHiWeather.Properties.Resources.background;
+            panel1.BackgroundImage = (Bitmap)WindowsFormsHiWeather.Properties.Resources.background1;
 
             PictureBox weather = new PictureBox();
             PictureBox picture = new PictureBox();
@@ -130,7 +137,7 @@ namespace WindowsFormsHiWeather
             Lbclass dglb = new Lbclass(this, "dglb", days[0].Toptemperature + "˚C  " + days[0].Toptemperature.ToString() + "/" + days[0].Bottomtemperature.ToString() + " \n" + days[0].Condition, 110, 50, 400, 40); // 기상 라벨
             Lbclass timelb = new Lbclass(this, "timelb", "마지막 업데이트: " + DateTime.Now.ToString("HH") + ":" + DateTime.Now.ToString("mm") + ":" + DateTime.Now.ToString("ss"), 200, 20, 350, 100);
 
-            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn5_Click);
+            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 30, 40, 920, 41, btn5_Click);
             Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn5_Click);
             Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
 
@@ -250,11 +257,13 @@ namespace WindowsFormsHiWeather
                     label.Location = new Point(120, 10);
                     label.Size = new Size(300, 30);
                     label.Font = new Font(FontFamily.GenericSansSerif, 16.0F, FontStyle.Bold);
+                    label.ForeColor = Color.White;
 
                     label1.Text = ((((Weather)weatherlist[a]).Conditions_hour[2]).Temperature).ToString() + "˚C";
                     label1.Location = new Point(150, 50);
                     label1.Size = new Size(50, 20);
                     label1.Font = new Font(FontFamily.GenericSerif, 14.0F);
+                    label1.ForeColor = Color.White;
 
                     switch ((((Weather)weatherlist[a]).Conditions_hour[2]).Condition)
                     {

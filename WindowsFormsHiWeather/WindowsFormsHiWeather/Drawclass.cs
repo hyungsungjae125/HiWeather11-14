@@ -81,7 +81,12 @@ namespace WindowsFormsHiWeather
             {
                 imageList.ImageSize = new Size(50, 32);
             }
-            imageList.ImageSize = new Size(50, 32);
+            else if (btn.Name == "rfbtn"|| btn.Name == "bmbtn")
+            {
+                imageList.ImageSize = new Size(50, 32);
+            }
+            else
+            imageList.ImageSize = new Size(70, 50);
             imageList.TransparentColor = Color.Transparent;
 
             btn.ImageIndex = 0;
@@ -114,7 +119,7 @@ namespace WindowsFormsHiWeather
             label.Size = new Size(lb.SX, lb.SY);
             label.Location = new Point(lb.PX, lb.PY);
             label.Font = new Font(FontFamily.GenericSansSerif, tSize, FontStyle.Bold);
-            label.ForeColor = Color.Black;
+            label.ForeColor = Color.White;
             label.BackColor = Color.Transparent;
             return label;
         }
@@ -126,7 +131,7 @@ namespace WindowsFormsHiWeather
             label.Size = new Size(lb.SX, lb.SY);
             label.Location = new Point(lb.PX, lb.PY);
             label.Font = new Font(FontFamily.GenericSansSerif, tSize, FontStyle.Bold);
-            label.ForeColor = Color.White;
+            label.ForeColor = Color.WhiteSmoke;
             label.BackColor = Color.Transparent;
             return label;
         }

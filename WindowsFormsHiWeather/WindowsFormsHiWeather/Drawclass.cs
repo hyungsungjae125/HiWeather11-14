@@ -76,7 +76,15 @@ namespace WindowsFormsHiWeather
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(255, 255);
             imageList.Images.Add(btn_myImage);
-            imageList.ImageSize = new Size(40, 28);
+            if(btn.Name=="sbtn")
+            {
+                imageList.ImageSize = new Size(50, 32);
+                
+            }
+            else
+            {
+                imageList.ImageSize = new Size(40, 28);
+            }
             imageList.TransparentColor = Color.Transparent;
 
             btn.ImageIndex = 0;
@@ -84,7 +92,7 @@ namespace WindowsFormsHiWeather
             btn.TabStop = false;
             btn.FlatStyle = FlatStyle.Flat;
             btn.FlatAppearance.BorderSize = 0;
-
+            btn.BackColor = Color.Transparent;
             return btn;
 
         }
@@ -108,6 +116,7 @@ namespace WindowsFormsHiWeather
             label.Location = new Point(lb.PX, lb.PY);
             label.Font = new Font(FontFamily.GenericSansSerif, tSize, FontStyle.Bold);
             label.ForeColor = Color.White;
+            label.BackColor = Color.Transparent;
             return label;
         }
     }

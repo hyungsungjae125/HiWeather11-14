@@ -30,6 +30,8 @@ namespace WindowsFormsHiWeather
             IsMdiContainer = true;
             Size = new Size(1000, 600);
 
+            
+
             //==================================================
             //금천구 날씨추가
             days[0] = new Days(15, "부분적으로 맑음", 15, 5);
@@ -94,7 +96,7 @@ namespace WindowsFormsHiWeather
             
             panel1.Location = new Point(pX, pY);
             panel1.Size = new Size(sX, sY);
-            panel1.BackColor = Color.SkyBlue;
+            panel1.BackColor = Color.AliceBlue;
 
             Controls.Add(panel1);
 
@@ -111,8 +113,9 @@ namespace WindowsFormsHiWeather
 
             panel1.Location = new Point(pX, pY);
             panel1.Size = new Size(sX, sY);
-            panel1.BackColor = Color.Aqua;
-
+            //panel1.BackColor = Color.Aqua;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.BackgroundImage = (Bitmap)WindowsFormsHiWeather.Properties.Resources.background;
             PictureBox weather = new PictureBox();
             PictureBox picture = new PictureBox();
 
@@ -130,7 +133,7 @@ namespace WindowsFormsHiWeather
             Lbclass adlb = new Lbclass(this, "adlb", "금천구\n서울 특별시", 130, 70, 400, 30);
             Lbclass dglb = new Lbclass(this, "dglb", "13˚C", 130, 70, 400, 100);
 
-            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn5_Click);
+            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 30, 40, 920, 40, btn5_Click);
             Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn5_Click);
             Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
             

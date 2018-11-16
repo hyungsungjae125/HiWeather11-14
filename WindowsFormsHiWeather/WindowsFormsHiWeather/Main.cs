@@ -165,30 +165,30 @@ namespace WindowsFormsHiWeather
             wticon.Location = new Point(15, 320);
             wticon.Size = new Size(40, 40);
             */
-            for (int i = 0; i < days.Length; i++)
-            {
-                addrlb = new Lbclass(this, "addrlb", days[i].Day.ToString() + "일", 80, 20, 30 + i * 50, 300); // 주소 라벨
-                dgrlb = new Lbclass(this, "dgrlb", days[i].Toptemperature + "˚C  " + days[0].Toptemperature.ToString() + "/" + days[0].Bottomtemperature.ToString(), 60, 40, 15 + i * 50, 360); // 기상 라벨
-                cdlb = new Lbclass(this, "cdlb", days[i].Condition, 100, 40, (15 + i * 50), 400);
+            //for (int i = 0; i < days.Length; i++)
+            //{
+                //addrlb = new Lbclass(this, "addrlb", days[i].Day.ToString() + "일", 80, 20, 30 + i * 50, 300); // 주소 라벨
+                //dgrlb = new Lbclass(this, "dgrlb", days[i].Toptemperature + "˚C  " + days[0].Toptemperature.ToString() + "/" + days[0].Bottomtemperature.ToString(), 60, 40, 15 + i * 50, 360); // 기상 라벨
+                //cdlb = new Lbclass(this, "cdlb", days[i].Condition, 100, 40, (15 + i * 50), 400);
 
-                dusticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust1");
-                wticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("sunny");
-                dusticon.SizeMode = PictureBoxSizeMode.StretchImage;
-                dusticon.Location = new Point(55 + i * 50, 320);
-                dusticon.Size = new Size(40, 40);
-                wticon.SizeMode = PictureBoxSizeMode.StretchImage;
-                wticon.Location = new Point(15 + i * 50, 320);
-                wticon.Size = new Size(40, 40);
+                //dusticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust1");
+                //wticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("sunny");
+                //dusticon.SizeMode = PictureBoxSizeMode.StretchImage;
+                //dusticon.Location = new Point(55 + i * 50, 320);
+                //dusticon.Size = new Size(40, 40);
+                //wticon.SizeMode = PictureBoxSizeMode.StretchImage;
+                //wticon.Location = new Point(15 + i * 50, 320);
+                //wticon.Size = new Size(40, 40);
 
-                panel1.Controls.Add(dc.lb1(addrlb, 15));
-                panel1.Controls.Add(dc.lb1(dgrlb, 12));
-                panel1.Controls.Add(dc.lb1(cdlb, 12));
-                panel1.Controls.Add(wticon);
-                panel1.Controls.Add(dusticon);
-            }
+                //panel1.Controls.Add(dc.lb1(addrlb, 15));
+                //panel1.Controls.Add(dc.lb1(dgrlb, 12));
+                //panel1.Controls.Add(dc.lb1(cdlb, 12));
+                //panel1.Controls.Add(wticon);
+                //panel1.Controls.Add(dusticon);
+            //}
 
-            panel1.Controls.Add(dc.lb1(adlb, 18));
-            panel1.Controls.Add(dc.lb1(dglb, 13));
+            //panel1.Controls.Add(dc.lb1(adlb, 18));
+            //panel1.Controls.Add(dc.lb1(dglb, 13));
             panel1.Controls.Add(dc.btn1(sbtn));
             panel1.Controls.Add(dc.btn1(rfbtn));
             panel1.Controls.Add(dc.btn1(bmbtn));

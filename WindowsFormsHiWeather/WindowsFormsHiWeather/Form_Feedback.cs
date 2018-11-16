@@ -190,7 +190,7 @@ namespace WindowsFormsHiWeather
         private void textbox_emailadress_click(object o, EventArgs a)
         {
             // 생성한 Radio버튼 연결
-            btn = (Button)o;
+            text = (TextBox)o;
 
             if (text.Name == "textbox_emailadress" && emailclick_initchk == 0)
             {

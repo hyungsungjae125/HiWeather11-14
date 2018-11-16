@@ -139,7 +139,16 @@ namespace WindowsFormsHiWeather
 
             Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 30, 40, 920, 41, btn5_Click);
             Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn5_Click);
-            Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
+            //Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
+            Btnclass bmbtn;
+            if (((Weather)weatherlist[0]).Book)
+            {
+                bmbtn = new Btnclass(this, "bmbtn2", "즐찾추가", 50, 45, 850, 0, btn5_Click);
+            }
+            else
+            {
+                bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
+            }
 
             weather.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("sunny");
             weather.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -175,20 +184,20 @@ namespace WindowsFormsHiWeather
                 picture_dust.Location = new Point(50 + (i * 120), 180);
                 picture_dust.BackColor = Color.Transparent;
 
-                panel1.Controls.Add(dc.lb1(tmp_lb,15));
-                panel1.Controls.Add(dc.lb1(con_lb,12));
-                panel1.Controls.Add(dc.lb1(hour_lb,12));
+                panel1.Controls.Add(dc.lb1(tmp_lb, 15));
+                panel1.Controls.Add(dc.lb1(con_lb, 12));
+                panel1.Controls.Add(dc.lb1(hour_lb, 12));
                 panel1.Controls.Add(picture_con);
                 panel1.Controls.Add(picture_dust);
             }
-            panel1.Controls.Add(dc.lb2(lb,18));
+            panel1.Controls.Add(dc.lb2(lb, 18));
             Lbclass lb_day = new Lbclass(this, "lb_day", "일별", 100, 30, 10, 280);
             for (int i = 0; i < days.Length; i++)
             {
                 PictureBox wticon = new PictureBox();
                 PictureBox dusticon = new PictureBox();
                 Lbclass addrlb = new Lbclass(this, "addrlb", days[i].Day.ToString() + "일", 80, 20, 30 + i * 140, 320); // 주소 라벨
-                Lbclass dgrlb = new Lbclass(this, "dgrlb", "최고 : "+days[i].Toptemperature + "˚C  "+ "\n최저 : " + days[i].Bottomtemperature.ToString() + "˚C  ", 100, 40, 15 + (i * 140), 390); // 기상 라벨
+                Lbclass dgrlb = new Lbclass(this, "dgrlb", "최고 : " + days[i].Toptemperature + "˚C  " + "\n최저 : " + days[i].Bottomtemperature.ToString() + "˚C  ", 100, 40, 15 + (i * 140), 390); // 기상 라벨
                 Lbclass cdlb = new Lbclass(this, "cdlb", days[i].Condition, 100, 40, (15 + i * 140), 430);
 
                 dusticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust1");
@@ -369,12 +378,31 @@ namespace WindowsFormsHiWeather
                     MessageBox.Show("새로고침");
                     break;
                 case "bmbtn":
+                case "bmbtn2":
                     if (((Weather)weatherlist[0]).Book)
                     {
+                        foreach (Control c in panel1.Controls)
+                        {
+                            if (c.Name == "bmbtn2")
+                            {
+                                c.Dispose();
+                                Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
+                                panel1.Controls.Add(dc.btn1(bmbtn));
+                            }
+                        }
                         MessageBox.Show("즐겨찾기삭제");
                     }
                     else
                     {
+                        foreach (Control c in panel1.Controls)
+                        {
+                            if (c.Name == "bmbtn")
+                            {
+                                c.Dispose();
+                                Btnclass bmbtn = new Btnclass(this, "bmbtn2", "즐찾추가", 50, 45, 850, 0, btn5_Click);
+                                panel1.Controls.Add(dc.btn1(bmbtn));
+                            }
+                        }
                         MessageBox.Show("즐겨찾기추가");
                     }
                      ((Weather)weatherlist[0]).Book = !((Weather)weatherlist[0]).Book;

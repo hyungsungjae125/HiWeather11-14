@@ -68,6 +68,11 @@ namespace WindowsFormsHiWeather
                 btn_myImage = (Image)Properties.Resources.Star;
                 //MessageBox.Show(bc.Name);
             }
+            else if (btn.Name == "bmbtn2")
+            {
+                btn_myImage = (Image)Properties.Resources.Star1;
+                //MessageBox.Show(bc.Name);
+            }
             else
             {
                 btn_myImage = (Image)Properties.Resources.search_button;

@@ -13,6 +13,10 @@ namespace WindowsFormsHiWeather
 {
     public partial class Main : Form
     {
+
+        ArrayList weatherlist = new ArrayList();//장소에대한 리스트
+        Days[] days = new Days[7];//장소에 대한 일별 세부사항 리스트
+        Conditions[] hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
         public Main()
         {
            
@@ -20,10 +24,6 @@ namespace WindowsFormsHiWeather
 
             Load += Main_Load;
         }
-
-        ArrayList weatherlist = new ArrayList();//장소에대한 리스트
-        Days[] days = new Days[7];//장소에 대한 일별 세부사항 리스트
-        Conditions[] hours = new Conditions[8];//장소에 대한 시간 세부사항 리스트
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -39,7 +39,6 @@ namespace WindowsFormsHiWeather
             days[4] = new Days(19, "맑음", 13, -1);
             days[5] = new Days(20, "대체로 흐림", 10, 1);
             days[6] = new Days(21, "부분적으로 맑음", 10, -1);
-            
             hours[0] = new Conditions(0, "대체로 흐림", 14, 0, 49, 2, "북서");
             hours[1] = new Conditions(3, "대체로 흐림", 14, 0, 53, 2, "북");
             hours[2] = new Conditions(6, "부분적으로 맑음", 14, 0, 47, 2, "북서");
@@ -61,7 +60,6 @@ namespace WindowsFormsHiWeather
             days[4] = new Days(19, "맑음", 13, -1);
             days[5] = new Days(20, "대체로 흐림", 10, 1);
             days[6] = new Days(21, "부분적으로 맑음", 10, -1);
-           
             hours[0] = new Conditions(0, "대체로 흐림", 5, 0, 49, 2, "북서");
             hours[1] = new Conditions(3, "대체로 흐림", 7, 0, 53, 2, "북");
             hours[2] = new Conditions(6, "부분적으로 맑음", 8, 0, 47, 2, "북서");
@@ -81,7 +79,7 @@ namespace WindowsFormsHiWeather
         Panel panel1;
         Drawclass dc = new Drawclass();
 
-        private Panel MenuPan(int sX,int sY,int pX,int pY)
+        private void MenuPan(int sX,int sY,int pX,int pY)
         {
 
             Btnclass bt1 = new Btnclass(this, "Home", "홈", 80,70, 0, 0, btn1_Click);
@@ -105,10 +103,9 @@ namespace WindowsFormsHiWeather
             panel1.Controls.Add(dc.btn1(bt3));
             panel1.Controls.Add(dc.btn1(bt4));
 
-            return panel1;
         }
         
-        private Panel MainPan(int sX, int sY, int pX, int pY)
+        private void MainPan(int sX, int sY, int pX, int pY)
         {
             panel1 = new Panel();
 
@@ -117,7 +114,7 @@ namespace WindowsFormsHiWeather
             panel1.BackColor = Color.Aqua;
 
             PictureBox weather = new PictureBox();
-            PictureBox dust = new PictureBox();
+            PictureBox picture = new PictureBox();
 
             TextBox tb = new TextBox();
 
@@ -129,51 +126,32 @@ namespace WindowsFormsHiWeather
 
             ResumeLayout(false);
             PerformLayout();
-            
-            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn1_Click);
-            Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn1_Click);
-            Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn1_Click);
 
-            Lbclass adlb = new Lbclass(this, "adlb", ((Weather)weatherlist[0]).Place+", "+ ((Weather)weatherlist[0]).City, 300, 25, 370, 0); // 주소 라벨
-            Lbclass dglb = new Lbclass(this, "dglb", days[0].Toptemperature+"˚C  "+days[0].Toptemperature.ToString()+"/"+days[0].Bottomtemperature.ToString()+" \n"+days[0].Condition, 110, 70, 400, 40); // 기상 라벨
-            //days[0] = new Days(15, "부분적으로 맑음", 15, 5);
+            Lbclass adlb = new Lbclass(this, "adlb", ((Weather)weatherlist[0]).Place + ", " + ((Weather)weatherlist[0]).City, 300, 25, 370, 0); // 주소 라벨
+            Lbclass dglb = new Lbclass(this, "dglb", days[0].Toptemperature + "˚C  " + days[0].Toptemperature.ToString() + "/" + days[0].Bottomtemperature.ToString() + " \n" + days[0].Condition, 110, 70, 400, 40); // 기상 라벨
+
+            Btnclass sbtn = new Btnclass(this, "sbtn", "검색", 50, 25, 920, 48, btn5_Click);
+            Btnclass rfbtn = new Btnclass(this, "rfbtn", "새로고침", 50, 45, 800, 0, btn5_Click);
+            Btnclass bmbtn = new Btnclass(this, "bmbtn", "즐찾추가", 50, 45, 850, 0, btn5_Click);
             
             weather.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("sunny");
             weather.SizeMode = PictureBoxSizeMode.StretchImage;
-            weather.Location = new Point(330, 30);
-            weather.Size = new Size(70, 65);
+            weather.Location = new Point(300, 30);
+            weather.Size = new Size(100, 100);
 
-            dust.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust2");
-            dust.SizeMode = PictureBoxSizeMode.StretchImage;
-            dust.Location = new Point(510, 30);
-            dust.Size = new Size(70, 65);
-
-            Lbclass addrlb;
-            Lbclass dgrlb;
-            Lbclass cdlb;
-            //PictureBox wticon = new PictureBox();
-            //PictureBox dusticon=new PictureBox();
-/*
- addrlb=new Lbclass(this, "addrlb", days[0].Day.ToString()+"일", 80, 20, 30, 300); // 주소 라벨
- dgrlb = new Lbclass(this, "dgrlb", days[0].Toptemperature+"˚C  "+days[0].Toptemperature.ToString()+"/"+days[0].Bottomtemperature.ToString(), 60, 40, 15, 360); // 기상 라벨
- cdlb = new Lbclass(this, "cdlb",days[0].Condition, 100, 40, 15, 400);
-           
- dusticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust1");
- wticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("sunny");        
-dusticon.SizeMode = PictureBoxSizeMode.StretchImage;
-dusticon.Location = new Point(55, 320);
-dusticon.Size = new Size(40, 40);
-wticon.SizeMode = PictureBoxSizeMode.StretchImage;
-wticon.Location = new Point(15, 320);
-wticon.Size = new Size(40, 40);
-*/
-           for(int i=0;i<days.Length;i++)
-            {
+            picture.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust2");
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            picture.Location = new Point(530, 30);
+            picture.Size = new Size(50, 50);
+            
+            
+              for(int i=0;i<days.Length;i++)
+            {   
                 PictureBox wticon = new PictureBox();
                  PictureBox dusticon=new PictureBox();
-                addrlb=new Lbclass(this, "addrlb", days[i].Day.ToString()+"일", 80, 20, 30+i*140, 300); // 주소 라벨
-                 dgrlb = new Lbclass(this, "dgrlb", days[i].Toptemperature+"˚C  "+days[i].Toptemperature.ToString()+"/"+days[i].Bottomtemperature.ToString(), 60, 40, 15+(i*140), 370); // 기상 라벨
-                 cdlb = new Lbclass(this, "cdlb",days[i].Condition, 100, 40, (15+i*140), 410);
+                Lbclass addrlb =new Lbclass(this, "addrlb", days[i].Day.ToString()+"일", 80, 20, 30+i*140, 300); // 주소 라벨
+                Lbclass dgrlb = new Lbclass(this, "dgrlb", days[i].Toptemperature+"˚C  "+days[i].Toptemperature.ToString()+"/"+days[i].Bottomtemperature.ToString(), 60, 40, 15+(i*140), 370); // 기상 라벨
+                Lbclass cdlb = new Lbclass(this, "cdlb",days[i].Condition, 100, 40, (15+i*140), 410);
                            
                  dusticon.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("dust1");
                  dusticon.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -192,20 +170,20 @@ wticon.Size = new Size(40, 40);
                 panel1.Controls.Add(dusticon);
             }
 
-            panel1.Controls.Add(dc.lb1(adlb,18));
-            panel1.Controls.Add(dc.lb1(dglb,13));
+            panel1.Controls.Add(dc.lb1(adlb,20));
+            panel1.Controls.Add(dc.lb1(dglb,15));
             panel1.Controls.Add(dc.btn1(sbtn));
             panel1.Controls.Add(dc.btn1(rfbtn));
             panel1.Controls.Add(dc.btn1(bmbtn));
             panel1.Controls.Add(tb);
             panel1.Controls.Add(weather);
-            panel1.Controls.Add(dust);
-           
- 
-           
-                Controls.Add(panel1);
-            return panel1;
+            panel1.Controls.Add(picture);
+
+            Controls.Add(panel1);
+            
         }
+
+        
         Form form = new Form();
         private void btn1_Click(Object o, EventArgs e)
         {
@@ -214,27 +192,41 @@ wticon.Size = new Size(40, 40);
 
         private void btn2_Click(Object o, EventArgs e)
         {
-            if (form != null)
-            {
-                form.Close();
-                form = null;
-            }
-            form = new Form();
-            form.MdiParent = this;
-            form.WindowState = FormWindowState.Maximized;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.BackColor = Color.Blue;
-            form.Show();
-           
+            MessageBox.Show("즐겨찾기");
         }
         private void btn3_Click(Object o, EventArgs e)
         {
-            MessageBox.Show("피드백");
+            Form_Feedback feedback = new Form_Feedback();
+            feedback.StartPosition = FormStartPosition.CenterParent;
+            feedback.ShowDialog();
+            //MessageBox.Show("피드백");
         }
         private void btn4_Click(Object o, EventArgs e)
         {
-            MessageBox.Show("설정");
+            Form_config config = new Form_config();
+            config.StartPosition = FormStartPosition.CenterParent;
+            config.ShowDialog();
+            //MessageBox.Show("설정");
         }
+        private void btn5_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            switch(button.Name)
+            {
+                case "sbtn":
+                    MessageBox.Show("검색");
+                    break;
+                case "rfbtn":
+                    MessageBox.Show("새로고침");
+                    break;
+                case "bmbtn":
+                    MessageBox.Show("즐겨찾기추가");
+                    break;
+                default:
+                    break;
+            }
+        }
+
 
     }
 }

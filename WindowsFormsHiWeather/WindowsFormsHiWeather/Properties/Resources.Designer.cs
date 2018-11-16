@@ -93,6 +93,16 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap cloudy1 {
+            get {
+                object obj = ResourceManager.GetObject("cloudy1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap config_image {
             get {
                 object obj = ResourceManager.GetObject("config_image", resourceCulture);
@@ -183,6 +193,16 @@ namespace WindowsFormsHiWeather.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap rain {
+            get {
+                object obj = ResourceManager.GetObject("rain", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap refresh {
             get {
                 object obj = ResourceManager.GetObject("refresh", resourceCulture);
@@ -226,6 +246,16 @@ namespace WindowsFormsHiWeather.Properties {
         internal static System.Drawing.Bitmap sunny {
             get {
                 object obj = ResourceManager.GetObject("sunny", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap thunder {
+            get {
+                object obj = ResourceManager.GetObject("thunder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -170,7 +170,7 @@ wticon.Size = new Size(40, 40);
            for(int i=0;i<days.Length;i++)
             {
                 PictureBox wticon = new PictureBox();
-            PictureBox dusticon=new PictureBox();
+                 PictureBox dusticon=new PictureBox();
                 addrlb=new Lbclass(this, "addrlb", days[i].Day.ToString()+"일", 80, 20, 30+i*140, 300); // 주소 라벨
                  dgrlb = new Lbclass(this, "dgrlb", days[i].Toptemperature+"˚C  "+days[i].Toptemperature.ToString()+"/"+days[i].Bottomtemperature.ToString(), 60, 40, 15+(i*140), 370); // 기상 라벨
                  cdlb = new Lbclass(this, "cdlb",days[i].Condition, 100, 40, (15+i*140), 410);
